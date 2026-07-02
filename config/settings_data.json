@@ -107,7 +107,7 @@
     "color_palette": {
       "background": "#F3EFE7",
       "foreground": "#111111",
-      "color1": "#0E2B22",
+      "color1": "#111111",
       "color2": "#B0885E"
     }
   },
