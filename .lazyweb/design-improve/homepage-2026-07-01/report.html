@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design Improvement: IRTH Homepage</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 48px 24px; line-height: 1.65; color: #1a1a1a; background: #fff; }
+  h1 { font-size: 1.9rem; margin-bottom: 0.3em; }
+  h2 { font-size: 1.35rem; margin-top: 2.2em; border-bottom: 1px solid #e5e0d8; padding-bottom: 0.3em; }
+  h3 { font-size: 1.1rem; margin-top: 1.6em; }
+  .tldr { background: #eaf2fb; border-left: 4px solid #4a86c8; padding: 16px 20px; border-radius: 6px; margin: 1.2em 0; }
+  img { max-width: 100%; border-radius: 10px; box-shadow: 0 4px 18px rgba(0,0,0,0.12); margin: 0.8em 0; }
+  pre { background: #f7f5f0; border: 1px solid #e5e0d8; border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 0.85rem; }
+  code { font-family: "SF Mono", Consolas, monospace; background: #f2efe8; padding: 1px 5px; border-radius: 4px; }
+  em { color: #555; font-size: 0.92rem; }
+  a { color: #a5794f; }
+  ul, ol { padding-left: 1.4em; }
+  .limitation { font-size: 0.85rem; color: #666; border-top: 1px solid #e5e0d8; margin-top: 2em; padding-top: 1em; }
+</style>
+</head>
+<body>
+
+<h1>Design Improvement: IRTH Homepage (Hero + Heritage Story)</h1>
+
+<div class="tldr">
+<strong>TL;DR</strong> — The biggest quick win visible in the actual screenshots: the announcement bar still reads generic Horizon-default copy ("Welcome to our store") above a fully custom, brand-correct hero and heritage section below it — swap that one line for something on-brand and the top-of-page immediately feels finished rather than half-migrated.
+</div>
+
+<h2>Current State</h2>
+<img src="references/current-hero.png" alt="Current hero">
+<p><em>Header + hero: "إرث IRTH — Luxury dates and heritage gifts from Madinah Al Munawwarah" over an archway/dates-bowl photo, single "Shop the Collection" CTA, left-aligned text block. [Live capture]</em></p>
+
+<img src="references/current.png" alt="Current heritage story section">
+<p><em>Heritage story section: gift-box product photography left, "Our Heritage" eyebrow / heading / body / "Our Story" text link right. [Live capture]</em></p>
+
+<h2>Improvement Ideas</h2>
+
+<h3>1. Replace the generic announcement bar copy ⭐ (highest impact, lowest effort)</h3>
+<p>"Welcome to our store" is Horizon's stock placeholder — visible top of every page. It's the one piece of the homepage that doesn't read as IRTH. Existing trust-line copy ("Halal Certified · 100% Traceable · Sourced from Madinah Al Munawwarah") is a drop-in replacement.</p>
+<p><strong>Why this works:</strong> heritage-gift leaders use every visible surface for brand voice — a generic top bar is the fastest "not finished" tell. One-line settings change.</p>
+<pre>┌──────────────────────────────────────────┐
+│ HALAL CERTIFIED · FREE SHIPPING GCC       │ ← was "Welcome to our store"
+├──────────────────────────────────────────┤
+│  [logo]   Dates  Herbs  Spirit  Gifts     │
+├──────────────────────────────────────────┤
+│         إرث IRTH — Luxury dates...        │</pre>
+
+<h3>2. Upgrade "Our Story" from a text link to a real secondary action</h3>
+<p>Currently a bare underlined link — lowest visual weight on the page. Should echo the hero's pill-button language (ghost/outline variant) so both sections read as one coherent flow.</p>
+<p><strong>Why this works:</strong> matches the Aesop pattern from the prior liquid-glass research — restrained but present secondary actions. Horizon's <code>media-with-content</code> button block already supports a style_class change — no new markup.</p>
+<pre>Our Heritage
+Sourced from Madinah Al Munawwarah
+
+Every IRTH product is hand-selected...
+
+┌─────────────┐
+│  Our Story →│   ← was a bare text link
+└─────────────┘</pre>
+
+<h3>3. Apply the researched liquid-glass treatment to the header, scoped to scroll state</h3>
+<p>Ties directly to the prior liquid-glass research. Header is currently a flat black bar. Making it translucent/blurred only after scrolling past the hero lands the 2026 trend exactly where research says it belongs — a persistent nav — without touching product-page chrome.</p>
+<pre>Scroll = 0px:        Scroll &gt; 0px:
+┌────────────┐       ┌░░░░░░░░░░░░┐  ← blurred/translucent
+│ solid black │       │░ logo  nav░│
+│ over photo  │       ├────────────┤
+└────────────┘        [ page content ]</pre>
+
+<h2>What's Working</h2>
+<ul>
+<li><strong>Single-CTA hero discipline</strong> — "Shop the Collection" is the only call to action; no competing links.</li>
+<li><strong>Left-aligned, asymmetric hero composition</strong> — not centered-generic, matches researched best practice.</li>
+<li><strong>Heritage section restraint</strong> — generous whitespace, one photo, short copy, trust badges kept in their own section.</li>
+<li><strong>Bilingual nav labels</strong> already legible without cluttering the layout.</li>
+</ul>
+
+<h2>All References</h2>
+<ul>
+<li><code>references/current-hero.png</code> — live capture, this session</li>
+<li><code>references/current.png</code> — live capture, this session</li>
+<li>Research synthesis carried over from <code>.lazyweb/design-research/irth-liquid-glass-modern-redesign-2026-07-01/report.md</code></li>
+</ul>
+
+<p class="limitation">Limitation: Lazyweb MCP not installed this session; no image-similarity search run. Recommendations grounded in live captures + prior web research.</p>
+
+</body>
+</html>

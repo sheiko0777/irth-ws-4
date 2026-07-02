@@ -1,0 +1,29 @@
+/* RTL overrides — scoped to [dir="rtl"] only. Additive; does not modify base.css. */
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] :lang(ar) {
+  font-family: 'Noto Naskh Arabic', var(--font-body--family);
+}
+
+/* Hero text/button blocks bake in alignment: left via section settings; force RTL alignment */
+[dir="rtl"] .hero .content-below-media,
+[dir="rtl"] .hero__content {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+/* Accordion / filter carets should not mirror */
+[dir="rtl"] .accordion-row__icon,
+[dir="rtl"] .disclosures summary::after,
+[dir="rtl"] [class*="caret"] {
+  transform: scaleX(-1);
+}
+
+/* Footer text blocks default to left alignment via inline settings */
+[dir="rtl"] .footer-block__details-content,
+[dir="rtl"] .footer .text {
+  text-align: right;
+}

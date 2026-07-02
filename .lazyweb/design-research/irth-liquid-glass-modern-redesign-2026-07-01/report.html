@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design Research: IRTH Store — Liquid Glass + Modern Minimal Enhancement</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 48px 24px; line-height: 1.65; color: #1a1a1a; background: #fff; }
+  h1 { font-size: 1.9rem; margin-bottom: 0.3em; }
+  h2 { font-size: 1.35rem; margin-top: 2.2em; border-bottom: 1px solid #e5e0d8; padding-bottom: 0.3em; }
+  h3 { font-size: 1.05rem; }
+  .tldr { background: #eaf2fb; border-left: 4px solid #4a86c8; padding: 16px 20px; border-radius: 6px; margin: 1.2em 0; }
+  pre { background: #f7f5f0; border: 1px solid #e5e0d8; border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 0.85rem; }
+  code { font-family: "SF Mono", Consolas, monospace; }
+  a { color: #a5794f; }
+  ul, ol { padding-left: 1.4em; }
+  .limitation { font-size: 0.85rem; color: #666; border-top: 1px solid #e5e0d8; margin-top: 2em; padding-top: 1em; }
+</style>
+</head>
+<body>
+
+<h1>Design Research: IRTH Store — Liquid Glass + Modern Minimal Enhancement</h1>
+
+<div class="tldr">
+<strong>TL;DR</strong> — IRTH's current Horizon build (ivory/gold/madinah-green, Cormorant + DM Sans, native sections) already matches the luxury-heritage-food pattern used by Bateel, Fortnum &amp; Mason, and To'ak Chocolate — minimal palette, editorial storytelling, restrained typography. The single highest-leverage move: apply liquid-glass translucency <strong>only</strong> to secondary/transient surfaces (cart drawer, sticky header-on-scroll, quick-view popovers) using settings Horizon already exposes — not as a global background treatment. Global glassmorphism would undercut the calm-heritage positioning; scoped glass reinforces it.
+</div>
+
+<h2>Current State</h2>
+<p>No live screenshot captured this pass — local browser-automation tooling hit a parameter-serialization bug in this environment. Current state is described from the theme's pushed JSON (verified via <code>shopify theme check</code> + live HTTP fetch): ivory (<code>#F3EFE7</code>) background, ink (<code>#111111</code>) text, madinah-green (<code>#0E2B22</code>) and gold (<code>#B0885E</code>) accents; Cormorant headings / DM Sans body; hero video → heritage story → trust badges → dates collection → gift-boxes collection → marquee → journal. Collection pages already have dedicated hero photography via alternate templates.</p>
+
+<h2>Recommendations / Next Steps</h2>
+
+<h3>1. Scope liquid glass to 3 surfaces only: cart drawer, sticky header, quick-view/popover</h3>
+<p>Research consensus (LogRocket, Orizon, DesignMonks) is unanimous: glass effects work as a secondary/transient layer — not a persistent background. Horizon already exposes <code>drawer_border_color</code>, <code>drawer_background_color</code>, <code>popover_border_radius</code>, <code>popover_border_color</code>. Add <code>backdrop-filter: blur(16px)</code> + translucent ivory background scoped to <code>.cart-drawer</code>, <code>.header--sticky</code>, <code>.popover</code> in a small new <code>assets/liquid-glass.css</code>.</p>
+<pre>┌──────────────────────────────┐
+│ ░░░ blurred header (scroll) ░░│  ← translucent, only after scroll &gt; 0
+├──────────────────────────────┤
+│                                │
+│   [ opaque product content ]  │  ← zero glass here — full clarity
+│                                │
+└──────────────────────────────┘
+        ┌───────────────┐
+        │ ░░ cart drawer ░░│  ← glass slide-in panel, blurred backdrop
+        │  item · item     │
+        │  [Checkout →]    │
+        └───────────────┘</pre>
+
+<h3>2. Editorial asymmetry on the About/heritage page</h3>
+<p>Aesop's pattern (Work &amp; Co): asymmetric split layouts, large photography, serif+sans pairing, subtle scroll-fade. Extend the existing <code>media-with-content</code> section type to a dedicated <code>page.about.json</code> with alternating <code>media_position</code> per block.</p>
+<pre>┌────────────┬─────────────────┐
+│            │  Eyebrow         │
+│   image    │  Heading         │
+│            │  Body copy       │
+├─────────────┬────────────────┤
+│  Eyebrow    │                 │
+│  Heading    │     image       │
+│  Body copy  │                 │
+└────────────┴─────────────────┘</pre>
+
+<h3>3. Confirm scroll-reveal is inherited by new sections</h3>
+<p><code>animations_reveal_on_scroll</code> is already <code>true</code> in settings — audit that trust badges / heritage story sections inherit it. This is Horizon's native equivalent of Aesop's "images fade in gently as you scroll" — zero custom JS.</p>
+
+<h3>4. Shop-by-occasion curation, matching Bateel / Fortnum &amp; Mason</h3>
+<p>Both lead with occasion-based entry points (Ramadan, corporate, wedding) rather than pure category grids. IRTH already has a Ramadan collection and gift-boxes — add a native <code>collection-list</code> section as occasion tiles.</p>
+<pre>┌───────┬───────┬───────┬───────┐
+│ Ramadan│ Corp. │Wedding│  New  │
+│ image  │Gifting│ Gifts │Arrival│
+└───────┴───────┴───────┴───────┘</pre>
+
+<h3>5. Product page: exhaustive craft/heritage detail</h3>
+<p>To'ak Chocolate and Fortnum &amp; Mason pair the buy box with origin story, tasting notes, pairing suggestions. Add an "Origin &amp; Harvest" accordion row alongside the existing FAQ accordion (product-information already accepts <code>@theme</code> blocks).</p>
+
+<h3>6. Mega-menu for bilingual category nav</h3>
+<p>Aesop's "shoppable navigation" — surfacing categories visually. Fits IRTH's Arabic/English dual-label collections. Worth a follow-up once Arabic is installed as a shop language.</p>
+
+<h2>Patterns (table stakes)</h2>
+<ul>
+<li>Soft neutral palette, generous whitespace, product photography as the hero.</li>
+<li>Serif for headings only, sans for body/UI — matches IRTH's Cormorant/DM Sans split.</li>
+<li>Storytelling content treated as a first-class page, not a footer afterthought.</li>
+<li>Subtle, restrained motion — fade/scroll-reveal, not aggressive parallax.</li>
+</ul>
+
+<h2>Anti-Patterns</h2>
+<ul>
+<li>Glassmorphism as a full-page background — the #1 flagged mistake across every 2026 source.</li>
+<li>Oversized "screaming" H1s.</li>
+<li>Generic 3-equal-card feature rows.</li>
+</ul>
+
+<h2>Unique Angle</h2>
+<p>To'ak Chocolate's homepage opens with a full-screen cinematic video of the harvesting/production process itself — the process <em>is</em> the hero. IRTH's hero video does something similar; worth confirming it's process/place-focused (Madinah groves, hand-selection) rather than a generic product loop.</p>
+
+<h2>Findings</h2>
+<p>The research validates IRTH's current direction rather than calling for a redesign. The gap isn't "more design" — it's applying liquid glass narrowly (drawers/overlays only) and deepening occasion-based storytelling the way heritage-gifting leaders do.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://grafitx.com/liquid-glass-ux-and-sustainable-design-how-major-brands-redefine-visual-standards-in-2026/">Liquid Glass UX Trends Shaping Design 2026</a></li>
+<li><a href="https://medium.com/design-bootcamp/ui-design-trend-2026-2-glassmorphism-and-liquid-design-make-a-comeback-50edb60ca81e">UI Design Trend 2026 #2: Glassmorphism and Liquid Design</a></li>
+<li><a href="https://www.designmonks.co/blog/liquid-glass-ui">Liquid Glass UI: Trend &amp; Dashboard Design</a></li>
+<li><a href="https://blog.logrocket.com/ux-design/adopting-liquid-glass-examples-best-practices/">Adopting Apple's Liquid Glass — LogRocket</a></li>
+<li><a href="https://www.orizon.co/blog/glassmorphism-in-2026-how-to-use-frosted-glass-without-killing-ux">Glassmorphism in 2026 — Orizon</a></li>
+<li><a href="https://www.limely.co.uk/blog/top-10-luxury-gift-ecommerce-websites">Top 10 Luxury Gift Ecommerce Websites — Limely</a></li>
+<li><a href="https://vervaunt.com/top-10-luxury-ecommerce-product-pages">10 Examples of Excellent Luxury eCommerce Product Pages — Vervaunt</a></li>
+<li><a href="https://bateel.com/en_us/">Bateel — Organic Dates and Luxury Gifts</a></li>
+<li><a href="https://work.co/clients/aesop/">Aesop Case Study — Work &amp; Co</a></li>
+<li><a href="https://www.adrianvancooten.com/work/aesop">Aesop Digital Experience — Adrian Van Cooten</a></li>
+<li><a href="https://craftshift.com/shopify-horizon-theme-customization-guide-2026/">Shopify Horizon Theme Customization Guide 2026</a></li>
+<li><a href="https://johnny-taft.medium.com/a-developers-technical-breakdown-of-shopify-s-horizon-theme-1de79d9949b2">A Developer's Technical Breakdown of Horizon</a></li>
+</ul>
+
+<p class="limitation">Limitation: Lazyweb MCP not installed, live screenshot capture failed (tool bug). Web-research-only, no downloaded reference images.</p>
+
+</body>
+</html>

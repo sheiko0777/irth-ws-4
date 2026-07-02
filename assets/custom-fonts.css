@@ -1,0 +1,63 @@
+/* IRTH custom fonts — scoped additions, do not override global body/heading tokens.
+   Applied selectively via .irth-font-* utility classes for editorial accent moments,
+   keeping Cormorant/DM Sans/Noto Naskh Arabic as the reliable defaults. */
+
+@font-face {
+  font-family: 'IRTH Ciguatera';
+  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-Ciguatera.otf?v=1782953230') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRTH A Suls';
+  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ASuls.ttf?v=1782953230') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'IRTH Thmanyah Serif';
+  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ThmanyahSerifBold.otf?v=1782953230') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* English editorial accent — auto-applies wherever Horizon's accent typography preset is used
+   (captions, eyebrows, marquee) via the theme's own --font-accent--family token. Arabic locale
+   overrides this below with A Suls instead, so it never fights the Arabic type system. */
+:root {
+  --font-accent--family: 'IRTH Ciguatera', var(--font-heading--family);
+}
+
+/* Manual utility classes, available for direct use in custom sections if needed */
+.irth-font-ciguatera {
+  font-family: 'IRTH Ciguatera', var(--font-accent--family);
+}
+
+.irth-font-a-suls {
+  font-family: 'IRTH A Suls', var(--font-accent--family);
+}
+
+/* Arabic editorial headings — replaces Noto Naskh Arabic for AR headings only */
+[dir="rtl"] .irth-font-thmanyah,
+[dir="rtl"] h1.irth-font-thmanyah,
+[dir="rtl"] h2.irth-font-thmanyah {
+  font-family: 'IRTH Thmanyah Serif', 'Noto Naskh Arabic', var(--font-heading--family);
+  font-weight: 700;
+}
+
+/* Arabic locale: use Thmanyah Serif for h1/h2 site-wide by default, A Suls for eyebrows/captions */
+html[lang="ar"] h1,
+html[lang="ar"] h2 {
+  font-family: 'IRTH Thmanyah Serif', 'Noto Naskh Arabic', var(--font-heading--family);
+}
+
+html[lang="ar"] {
+  --font-accent--family: 'IRTH A Suls', 'Noto Naskh Arabic', var(--font-heading--family);
+}

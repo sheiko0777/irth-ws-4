@@ -1,0 +1,22 @@
+/* Liquid glass header — scoped to sticky-active scroll state only.
+   Never applied at scroll=0; header stays solid/opaque on initial load. */
+
+header-component.header[data-sticky-state='active'] {
+  border-bottom: 1px solid rgba(176, 136, 94, 0.35); /* gold token, low opacity, stays visible in light mode */
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  header-component.header[data-sticky-state='active'] {
+    background-color: rgba(243, 239, 231, 0.82); /* ivory token at 82% opacity */
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    transition: background-color 200ms ease, border-color 200ms ease, backdrop-filter 200ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header-component.header[data-sticky-state='active'] {
+    transition: none;
+  }
+}
