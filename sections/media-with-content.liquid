@@ -48,6 +48,7 @@
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
   {% endif %}
+  {% unless request.design_mode %}data-animate-on-scroll{% endunless %}
 >
   {% content_for 'block', type: '_media-without-appearance', id: 'media' %}
 

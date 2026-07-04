@@ -1,6 +1,12 @@
-/* IRTH custom fonts — scoped additions, do not override global body/heading tokens.
-   Applied selectively via .irth-font-* utility classes for editorial accent moments,
-   keeping Cormorant/DM Sans/Noto Naskh Arabic as the reliable defaults. */
+{% style %}
+/* IRTH custom fonts. Ciguatera + Thmanyah Serif are now the site-wide heading fonts
+   (set on --font-heading--family in snippets/theme-styles-variables.liquid) — Latin text
+   renders via Ciguatera, Arabic text falls through to Thmanyah Serif automatically since
+   Ciguatera has no Arabic glyphs. Utility classes below remain for manual overrides.
+
+   Rendered as a snippet (not a static asset) so the asset_url filter below actually
+   resolves — Shopify serves assets/*.css.liquid as a raw static file and never runs
+   Liquid inside it, which silently broke these @font-face src URLs. */
 
 @font-face {
   font-family: 'IRTH Ciguatera';
@@ -12,7 +18,7 @@
 
 @font-face {
   font-family: 'IRTH A Suls';
-  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ASuls.ttf?v=1782953230') format('truetype');
+  src: url('{{ "irth-a-suls.ttf" | asset_url }}') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -23,6 +29,27 @@
   font-family: 'IRTH Thmanyah Serif';
   src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ThmanyahSerifBold.otf?v=1782953230') format('opentype');
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* Genuine Thuluth calligraphy (DecoType) — verified real glyph outlines, unlike the
+   earlier A Suls file. Served as a theme asset, not Shopify Files. */
+@font-face {
+  font-family: 'IRTH DecoType Thuluth';
+  src: url('{{ "irth-decotype-thuluth.ttf" | asset_url }}') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* Sakkal Seta Pro — second Thuluth-style candidate, verified real glyph outlines. */
+@font-face {
+  font-family: 'IRTH Sakkal Seta';
+  src: url('{{ "irth-sakkal-seta.ttf" | asset_url }}') format('truetype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF;
@@ -61,3 +88,4 @@ html[lang="ar"] h2 {
 html[lang="ar"] {
   --font-accent--family: 'IRTH A Suls', 'Noto Naskh Arabic', var(--font-heading--family);
 }
+{% endstyle %}

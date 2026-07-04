@@ -24,7 +24,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 6,
+            "gap": 16,
             "width": "fill",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -34,19 +34,20 @@
             "background_media": "none",
             "video_position": "cover",
             "background_image_position": "cover",
-            "border": "none",
+            "border": "solid",
             "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
+            "border_opacity": 55,
+            "border_color": "#B0885E",
+            "border_radius": 20,
             "toggle_overlay": false,
             "overlay_color": "#00000026",
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "open_in_new_tab": false,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-block-start": 32,
+            "padding-block-end": 32,
+            "padding-inline-start": 28,
+            "padding-inline-end": 28
           },
           "blocks": {
             "text_LWt8Pz": {
@@ -96,62 +97,171 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "email_signup_crihX7": {
+              "type": "email-signup",
+              "settings": {
+                "width": "fill",
+                "custom_width": 100,
+                "heading_preset": "h3",
+                "border_style": "all",
+                "input_style": "custom",
+                "border_width": 1,
+                "border_radius": 100,
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.color1 }}",
+                "input_border_color": "{{ settings.color_palette.color2 }}",
+                "input_type_preset": "paragraph",
+                "style_class": "button-unstyled",
+                "display_type": "arrow",
+                "label": "Sign up",
+                "integrated_button": true,
+                "button_type_preset": "paragraph",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "payment_icons_irth1": {
+              "type": "payment-icons",
+              "settings": {
+                "horizontal_alignment": "flex-start",
+                "gap": 10
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_LWt8Pz",
-            "text_f9CFLH"
+            "text_f9CFLH",
+            "email_signup_crihX7",
+            "payment_icons_irth1"
           ]
         },
-        "menu_irth1": {
+        "menu_collections_irth1": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
+            "menu": "footer-collections",
             "heading": "Shop",
             "menu_spacing": 12
           },
           "blocks": {}
         },
-        "payment_icons_irth1": {
-          "type": "payment-icons",
+        "menu_company_irth1": {
+          "type": "menu",
           "settings": {
-            "horizontal_alignment": "flex-start",
-            "gap": 10
+            "menu": "footer-company",
+            "heading": "Our Story",
+            "menu_spacing": 12
           },
           "blocks": {}
         },
-        "email_signup_crihX7": {
-          "type": "email-signup",
+        "menu_support_irth1": {
+          "type": "menu",
           "settings": {
+            "menu": "footer-support",
+            "heading": "Shipping & Care",
+            "menu_spacing": 12
+          },
+          "blocks": {}
+        },
+        "manifesto_irth1": {
+          "type": "group",
+          "name": "Manifesto",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 6,
             "width": "fill",
             "custom_width": 100,
-            "heading_preset": "h3",
-            "border_style": "all",
-            "input_style": "custom",
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
             "border_width": 1,
-            "border_radius": 100,
-            "input_background_color": "{{ settings.color_palette.background }}",
-            "input_text_color": "{{ settings.color_palette.color1 }}",
-            "input_border_color": "{{ settings.color_palette.color2 }}",
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "open_in_new_tab": false,
+            "padding-block-start": 24,
+            "padding-block-end": 8,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
+          "blocks": {
+            "text_manifesto_en": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Some things are not made, they are inherited.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h5",
+                "font": "var(--font-heading--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_manifesto_ar": {
+              "type": "text",
+              "settings": {
+                "text": "<p>إرث</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h6",
+                "font": "var(--font-heading--family)",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_manifesto_en",
+            "text_manifesto_ar"
+          ]
         }
       },
       "block_order": [
         "group_H6VpwJ",
-        "menu_irth1",
-        "payment_icons_irth1",
-        "email_signup_crihX7"
+        "menu_collections_irth1",
+        "menu_company_irth1",
+        "menu_support_irth1",
+        "manifesto_irth1"
       ],
       "name": "t:names.footer",
       "settings": {
@@ -168,7 +278,7 @@
         "footer_copyright_jweRK8": {
           "type": "footer-copyright",
           "settings": {
-            "show_powered_by": true,
+            "show_powered_by": false,
             "font_size": "0.75rem",
             "case": "none"
           },
@@ -185,7 +295,10 @@
         "social_links_Ew63Kq": {
           "type": "social-links",
           "settings": {
-            "instagram_url": "https://www.instagram.com/irthhouse"
+            "instagram_url": "https://www.instagram.com/irth.house",
+            "twitter_url": "https://x.com/irthhouse",
+            "facebook_url": "https://www.facebook.com/Houseirth",
+            "whatsapp_url": "https://wa.me/201115554108"
           },
           "blocks": {}
         }

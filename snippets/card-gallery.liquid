@@ -61,6 +61,12 @@
       assign media_fit = block_settings.constrain_to_viewport
     endif
   endif
+
+  # IRTH: always show the full product photo inside fixed-ratio cards (zoom out, never crop) -
+  # different products have different native framing/aspect ratios, so contain avoids cutting them off.
+  unless block_settings.image_ratio == 'adapt'
+    assign media_fit = 'contain'
+  endunless
 %}
 
 <div

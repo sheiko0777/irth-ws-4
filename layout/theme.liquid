@@ -7,13 +7,11 @@
   dir="{% if request.locale.iso_code == 'ar' %}rtl{% else %}ltr{% endif %}"
 >
   <head>
-    {%- if settings.favicon != blank -%}
-      <link
-        rel="icon"
-        type="image/png"
-        href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-      >
-    {%- endif -%}
+    <link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+    <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ 'favicon-96x96.png' | asset_url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <link rel="manifest" href="{{ 'site.webmanifest' | asset_url }}">
 
     {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
     {% if settings.transition_to_main_product or settings.page_transition_enabled %}
@@ -28,7 +26,7 @@
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
     {{ 'liquid-glass-header.css' | asset_url | stylesheet_tag }}
-    {{ 'custom-fonts.css' | asset_url | stylesheet_tag }}
+    {%- render 'custom-fonts' -%}
     {% if request.locale.iso_code == 'ar' %}
       {{ 'rtl-overrides.css' | asset_url | stylesheet_tag }}
     {% endif %}

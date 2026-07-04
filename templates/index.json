@@ -16,13 +16,13 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>إرث IRTH — Luxury dates and heritage gifts from Madinah Al Munawwarah</p>",
+            "text": "<p>إرث<br>Some things are not made, they are inherited.<br>بعض الأشياء لا تصنع، بل تورث</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font": "'IRTH Sakkal Seta', 'IRTH DecoType Thuluth', 'IRTH Thmanyah Serif', 'Noto Naskh Arabic', var(--font-heading--family)",
+            "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -30,11 +30,11 @@
             "text_color": "{{ settings.color_palette.background }}",
             "background": true,
             "background_color": "#00000059",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "corner_radius": 6,
+            "padding-block-start": 12,
+            "padding-block-end": 12,
+            "padding-inline-start": 16,
+            "padding-inline-end": 16
           },
           "blocks": {}
         },
@@ -82,8 +82,8 @@
         "section_width": "page-width",
         "section_height": "medium",
         "section_height_custom": 50,
-        "background_color": "rgba(0,0,0,0)",
-        "toggle_overlay": true,
+        "background_color": "{{ settings.color_palette.background }}",
+        "toggle_overlay": false,
         "overlay_color": "#12121266",
         "overlay_style": "solid",
         "gradient_direction": "to bottom",
@@ -192,7 +192,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -211,8 +211,8 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
+                "type_preset": "h5",
+                "font": "var(--font-heading--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -235,7 +235,7 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
-                "type_preset": "h6",
+                "type_preset": "paragraph",
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
@@ -243,6 +243,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "rgba(17,17,17,0.65)",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -275,8 +276,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     },
     "media_with_content_irth1": {
@@ -352,12 +353,12 @@
       "name": "Heritage story",
       "settings": {
         "media_position": "left",
-        "media_width": "medium",
-        "media_height": "60svh",
-        "section_width": "page-width",
+        "media_width": "wide",
+        "media_height": "80svh",
+        "section_width": "full-width",
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "section_trust_irth1": {
@@ -397,7 +398,7 @@
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
-                    "type_preset": "h3",
+                    "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "line_height": "normal",
                     "letter_spacing": "normal",
@@ -470,7 +471,7 @@
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
-                    "type_preset": "h3",
+                    "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "line_height": "normal",
                     "letter_spacing": "normal",
@@ -543,7 +544,7 @@
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
-                    "type_preset": "h3",
+                    "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "line_height": "normal",
                     "letter_spacing": "normal",
@@ -595,8 +596,8 @@
         "gap": 16,
         "section_width": "page-width",
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
     "product_list_giftboxes": {
@@ -693,7 +694,7 @@
             "product_card_gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -711,8 +712,8 @@
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
+                "type_preset": "h5",
+                "font": "var(--font-heading--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -734,7 +735,7 @@
                 "show_sale_price_first": true,
                 "show_installments": false,
                 "show_tax_info": false,
-                "type_preset": "h6",
+                "type_preset": "paragraph",
                 "width": "100%",
                 "alignment": "left",
                 "font": "var(--font-body--family)",
@@ -742,6 +743,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
+                "text_color": "rgba(17,17,17,0.65)",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -774,8 +776,8 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 64,
+        "padding-block-end": 56
       }
     },
     "marquee_irth1": {
@@ -784,14 +786,15 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>HALAL CERTIFIED &middot; 100% TRACEABLE &middot; SOURCED FROM MADINAH AL MUNAWWARAH &middot;</p>",
+            "text": "<p>Halal Certified &middot; 100% Traceable &middot; Sourced from Madinah Al Munawwarah &middot;</p>",
             "width": "fit-content",
             "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "var(--font-size--h2)",
+            "font": "var(--font-heading--family)",
+            "font_size": "var(--font-size--h5)",
             "line_height": "tight",
-            "letter_spacing": "tight",
+            "letter_spacing": "normal",
             "case": "none",
+            "text_color": "{{ settings.color_palette.background }}",
             "wrap": "nowrap"
           }
         }
@@ -801,7 +804,7 @@
       ],
       "name": "Trust marquee",
       "settings": {
-        "movement_direction": "left",
+        "movement_direction": "normal",
         "background_color": "{{ settings.color_palette.color1 }}",
         "padding-block-start": 20,
         "padding-block-end": 20,
@@ -860,8 +863,8 @@
         "columns": 3,
         "section_width": "page-width",
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 72,
+        "padding-block-end": 72
       }
     }
   },
