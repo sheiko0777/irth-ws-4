@@ -155,16 +155,29 @@ select {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-animate-on-scroll] {
+  /* Scoped to [data-reveal-ready], which section-reveal's inline bootstrap sets on
+     <html> and removes again if the reveal script never initialises. Without that
+     gate the hidden state is pure CSS, so anything that does not run the observer
+     (JS disabled, a failed asset fetch, a non-rendering crawler) renders these
+     sections permanently blank instead of merely un-animated. */
+  [data-reveal-ready] [data-animate-on-scroll] {
     opacity: 0;
     transform: translateY(var(--reveal-distance));
     transition: opacity var(--reveal-duration) var(--ease-out-quart),
       transform var(--reveal-duration) var(--ease-out-quart);
   }
 
-  [data-animate-on-scroll][data-reveal-visible] {
+  [data-reveal-ready] [data-animate-on-scroll][data-reveal-visible] {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Stated explicitly rather than left to "no rule matches", so the ungated
+     fallback lands on a fully visible, unshifted card no matter what the
+     reveal left behind. */
+  html:not([data-reveal-ready]) [data-animate-on-scroll] {
+    opacity: 1;
+    transform: none;
   }
 }
 

@@ -282,6 +282,21 @@
   defer="defer"
 ></script>
 
+{%- comment -%}
+  Runs synchronously in <head> so the reveal's hidden state is armed before first
+  paint (no flash of visible-then-hidden). The watchdog disarms it if the deferred
+  script below never initialises, so a failed fetch degrades to plain visible
+  content rather than an empty section.
+{%- endcomment -%}
+<script>
+  document.documentElement.setAttribute('data-reveal-ready', '');
+  window.setTimeout(function () {
+    if (!window.__irthRevealInit) {
+      document.documentElement.removeAttribute('data-reveal-ready');
+    }
+  }, 3000);
+</script>
+
 <script
   src="{{ 'section-reveal.js' | asset_url }}"
   defer="defer"

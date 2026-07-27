@@ -43,6 +43,12 @@
   {{ block.shopify_attributes }}
 >
   {% liquid
+    comment
+      The srcset is generated from this height. Mobile can be set larger than
+      desktop, so ask for whichever is bigger — otherwise the mobile logo is
+      served below its rendered size and looks soft on high-DPR screens.
+    endcomment
+    assign logo_render_height = settings.logo_height | at_least: settings.logo_height_mobile
     assign logo_width = settings.logo_height | times: settings.logo.aspect_ratio | ceil
     assign logo_width_mobile = settings.logo_height_mobile | times: settings.logo.aspect_ratio | ceil
     assign inverse_logo_width = settings.logo_height | times: inverse_logo.aspect_ratio | ceil
@@ -58,7 +64,7 @@
     {% render 'image',
       image: settings.logo,
       class: 'header-logo__image',
-      height: settings.logo_height,
+      height: logo_render_height,
       alt_text_fallback: alt_text_fallback,
       text_fallback: shop.name,
       style: logo_style
@@ -75,7 +81,7 @@
       {% render 'image',
         image: inverse_logo,
         class: 'header-logo__image',
-        height: settings.logo_height,
+        height: logo_render_height,
         alt_text_fallback: alt_text_fallback,
         text_fallback: shop.name,
         style: inverse_logo_style
@@ -125,15 +131,19 @@
   }
 
   .header-logo__provenance {
-    display: none;
+    display: block;
     font-family: var(--font-subheading--family, var(--font-body--family));
-    font-size: 0.625rem;
-    letter-spacing: 0.04em;
+    /* nowrap below means this can only overflow, never wrap, so the sizes are
+       held to what measures inside the logo block: 11px renders ~156px against
+       212px available on a 390px screen. */
+    font-size: 0.6875rem;
+    letter-spacing: 0.03em;
     color: #B0885E;
     white-space: nowrap;
 
     @media screen and (min-width: 990px) {
-      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
     }
   }
 

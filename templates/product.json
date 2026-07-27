@@ -15,7 +15,7 @@
           "type": "disclosures",
           "name": "t:names.disclosures",
           "settings": {
-            "heading": "Disclosures",
+            "heading": "الإفصاحات — Disclosures",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -172,10 +172,16 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "preview_badge_page_irth1": {
+                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                  "disabled": false,
+                  "settings": {}
                 }
               },
               "block_order": [
                 "text_xrnftG",
+                "preview_badge_page_irth1",
                 "price_tVjtKg"
               ]
             },
@@ -339,12 +345,16 @@
                   "blocks": {
                     "icon": {
                       "type": "icon",
-                      "settings": { "icon": "check_box", "width": 20, "link": "" }
+                      "settings": {
+                        "icon": "check_box",
+                        "width": 20,
+                        "link": ""
+                      }
                     },
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Halal Certified</p>",
+                        "text": "<p>حلال معتمد — Halal Certified</p>",
                         "type_preset": "paragraph",
                         "font": "var(--font-body--family)",
                         "font_size": "0.875rem",
@@ -359,7 +369,10 @@
                       }
                     }
                   },
-                  "block_order": ["icon", "text"]
+                  "block_order": [
+                    "icon",
+                    "text"
+                  ]
                 },
                 "badge_2": {
                   "type": "group",
@@ -374,12 +387,16 @@
                   "blocks": {
                     "icon": {
                       "type": "icon",
-                      "settings": { "icon": "map_pin", "width": 20, "link": "" }
+                      "settings": {
+                        "icon": "map_pin",
+                        "width": 20,
+                        "link": ""
+                      }
                     },
                     "text": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Traceable Origin</p>",
+                        "text": "<p>منشأ يمكن تتبعه — Traceable Origin</p>",
                         "type_preset": "paragraph",
                         "font": "var(--font-body--family)",
                         "font_size": "0.875rem",
@@ -394,10 +411,16 @@
                       }
                     }
                   },
-                  "block_order": ["icon", "text"]
+                  "block_order": [
+                    "icon",
+                    "text"
+                  ]
                 }
               },
-              "block_order": ["badge_1", "badge_2"]
+              "block_order": [
+                "badge_1",
+                "badge_2"
+              ]
             },
             "accordion_faq_irth1": {
               "type": "accordion",
@@ -418,7 +441,9 @@
               "blocks": {
                 "row_1": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Is this product Halal certified?" },
+                  "settings": {
+                    "heading": "هل هذا المنتج حلال معتمد؟ — Is this product Halal certified?"
+                  },
                   "blocks": {
                     "text": {
                       "type": "text",
@@ -440,11 +465,15 @@
                       }
                     }
                   },
-                  "block_order": ["text"]
+                  "block_order": [
+                    "text"
+                  ]
                 },
                 "row_2": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Where are your dates sourced from?" },
+                  "settings": {
+                    "heading": "من أين مصدر تمورك؟ — Where are your dates sourced from?"
+                  },
                   "blocks": {
                     "text": {
                       "type": "text",
@@ -466,11 +495,15 @@
                       }
                     }
                   },
-                  "block_order": ["text"]
+                  "block_order": [
+                    "text"
+                  ]
                 },
                 "row_3": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "How is traceability guaranteed?" },
+                  "settings": {
+                    "heading": "كيف يتم ضمان التتبع؟ — How is traceability guaranteed?"
+                  },
                   "blocks": {
                     "text": {
                       "type": "text",
@@ -492,11 +525,15 @@
                       }
                     }
                   },
-                  "block_order": ["text"]
+                  "block_order": [
+                    "text"
+                  ]
                 },
                 "row_4": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "How should I store my order?" },
+                  "settings": {
+                    "heading": "كيف أحفظ طلبي؟ — How should I store my order?"
+                  },
                   "blocks": {
                     "text": {
                       "type": "text",
@@ -518,10 +555,17 @@
                       }
                     }
                   },
-                  "block_order": ["text"]
+                  "block_order": [
+                    "text"
+                  ]
                 }
               },
-              "block_order": ["row_1", "row_2", "row_3", "row_4"]
+              "block_order": [
+                "row_1",
+                "row_2",
+                "row_3",
+                "row_4"
+              ]
             }
           },
           "block_order": [
@@ -533,10 +577,16 @@
             "text_aEtTtq",
             "accordion_faq_irth1"
           ]
+        },
+        "review_widget_irth1": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
         }
       },
       "block_order": [
-        "disclosures_g9mWze"
+        "disclosures_g9mWze",
+        "review_widget_irth1"
       ],
       "settings": {
         "content_width": "content-center-aligned",
@@ -557,7 +607,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>Pairs Well With</h3>",
+            "text": "<h3>يتناسق جيدًا مع — Pairs Well With</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -660,11 +710,17 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "preview_badge_irthjm9": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "disabled": false,
+              "settings": {}
             }
           },
           "block_order": [
             "product_card_gallery_DNizbJ",
             "product_title_M7MJkb",
+            "preview_badge_irthjm9",
             "price_gLWgA6"
           ]
         }

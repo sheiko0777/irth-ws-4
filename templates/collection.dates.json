@@ -54,7 +54,10 @@
           "blocks": {}
         }
       },
-      "block_order": ["text_tqQTNE", "text_twGGkJ"],
+      "block_order": [
+        "text_tqQTNE",
+        "text_twGGkJ"
+      ],
       "name": "Collection heading",
       "settings": {
         "content_direction": "column",
@@ -91,7 +94,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Halal Certified &middot; Traceable Origin &middot; Ships from Madinah Al Munawwarah</p>",
+            "text": "<p>حلال معتمد &middot; منشأ يمكن تتبعه &middot; يُشحن من المدينة المنورة &middot; Halal Certified &middot; Traceable Origin &middot; Ships from Madinah Al Munawwarah</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "center",
@@ -112,7 +115,9 @@
           "blocks": {}
         }
       },
-      "block_order": ["text"],
+      "block_order": [
+        "text"
+      ],
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -225,9 +230,19 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "preview_badge_irthjm3": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "disabled": false,
+              "settings": {}
             }
           },
-          "block_order": ["card-gallery", "product_title_4nY4eT", "price_EzJzMm"]
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "preview_badge_irthjm3",
+            "price_EzJzMm"
+          ]
         }
       },
       "settings": {
@@ -246,5 +261,9 @@
       }
     }
   },
-  "order": ["section", "trust_strip", "main"]
+  "order": [
+    "section",
+    "trust_strip",
+    "main"
+  ]
 }

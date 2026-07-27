@@ -10,11 +10,9 @@
 {
   "current": {
     "logo": "shopify://shop_images/IRTH-logo-gold.png",
-    "favicon": "shopify://shop_images/IRTH_logo.svg",
     "logo_height": 48,
-    "logo_height_mobile": 36,
-    "page_background_color": "{{ settings.color_palette.background }}",
-    "page_width": "narrow",
+    "logo_height_mobile": 56,
+    "favicon": "shopify://shop_images/IRTH_logo.svg",
     "page_text_color": "{{ settings.color_palette.foreground }}",
     "type_body_font": "dm_sans_n4",
     "type_subheading_font": "dm_sans_n5",
@@ -49,6 +47,8 @@
     "type_line_height_h6": "display-loose",
     "type_letter_spacing_h6": "heading-loose",
     "type_case_h6": "uppercase",
+    "page_background_color": "{{ settings.color_palette.background }}",
+    "page_width": "narrow",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "card_hover_effect": "lift",
@@ -107,6 +107,70 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "content_for_index": [],
+    "blocks": {
+      "14494032640169117832": {
+        "type": "shopify://apps/instagram-shop-ai/blocks/app-embed/8af8f5ee-21cb-48a3-80e7-13a99e2519b5",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "3979034072534932226": {
+        "type": "shopify://apps/metashop-instagram-facebook/blocks/app-embed/a2ba3b6f-1992-4528-a81d-226ccc4d2a86",
+        "disabled": false,
+        "settings": {}
+      },
+      "8529531577560427644": {
+        "type": "shopify://apps/otp/blocks/otp-plus/47f9f75c-53b3-4e16-ba66-80a88d275a5b",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "13047258039897440615": {
+        "type": "shopify://apps/judge-me-reviews/blocks/cart_drawer_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {
+          "widget_type": "review-widget"
+        }
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "greeting_message": "",
+          "background_color": "#F3EFE7",
+          "font_color": "#111111",
+          "button_color": "#111111",
+          "secondary_color": "#F3EFE7",
+          "ternary_color": "#B0885E",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "agent_inherit_fonts": true,
+          "agent_font": "dm_sans_n4",
+          "agent_border_radius": 14
+        }
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      },
+      "7832837169870307141": {
+        "type": "shopify://apps/yozo-ai-marketing-agent/blocks/extensions/b16bf2b3-cccb-42af-b472-840208fc9601",
+        "disabled": true,
+        "settings": {}
+      }
+    },
     "color_palette": {
       "background": "#F3EFE7",
       "foreground": "#111111",

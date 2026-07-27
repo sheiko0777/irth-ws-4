@@ -1,10 +1,20 @@
 <!doctype html>
+{%- liquid
+  # IRTH: request.locale.iso_code incorrectly resolves to the primary (English)
+  # locale on product pages viewed under an /ar/ locale path, unlike every other
+  # page type (home, collection, blog, generic pages), where it resolves correctly.
+  # request.path reliably reflects the true locale prefix, so use it as a fallback.
+  assign locale_iso = request.locale.iso_code
+  if request.path == '/ar' or request.path contains '/ar/'
+    assign locale_iso = 'ar'
+  endif
+-%}
 <html
   {% if request.design_mode %}
     class="shopify-design-mode"
   {% endif %}
-  lang="{{ request.locale.iso_code }}"
-  dir="{% if request.locale.iso_code == 'ar' %}rtl{% else %}ltr{% endif %}"
+  lang="{{ locale_iso }}"
+  dir="{% if locale_iso == 'ar' %}rtl{% else %}ltr{% endif %}"
 >
   <head>
     <link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
@@ -144,5 +154,8 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    {% render 'irth-social-rail' %}
+    {% render 'irth-card-polish' %}
   </body>
 </html>

@@ -8,6 +8,18 @@
   font-family: 'Noto Naskh Arabic', var(--font-body--family);
 }
 
+/* The rule above is a fallback for Arabic text that has no font of its own, but
+   as written it also outranks (0,2,0 vs 0,1,0) every block where a font was
+   deliberately picked in the theme editor — on /ar that silently replaced the
+   IRTH faces with Noto Naskh on 9 of 11 custom-typography blocks, the hero
+   statement strip included. Repeat the class to win on specificity and hand
+   those blocks back the font they actually asked for; everything else still
+   falls back to Noto Naskh above. */
+[dir="rtl"] .custom-typography.custom-typography,
+[dir="rtl"] .custom-typography.custom-typography > * {
+  font-family: var(--font-family);
+}
+
 /* Hero text/button blocks bake in alignment: left via section settings; force RTL alignment */
 [dir="rtl"] .hero .content-below-media,
 [dir="rtl"] .hero__content {

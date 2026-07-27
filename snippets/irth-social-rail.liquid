@@ -1,0 +1,213 @@
+{%- doc -%}
+  Renders a light, translucent floating social rail with an animated WhatsApp call-to-action.
+
+  Sits on the inline-start edge (left in LTR, right in RTL) so it never collides with the
+  Shopify chat launcher, which is pinned to the inline-end edge. Collapses to a horizontal
+  pill at the bottom on small screens.
+
+  @param {string} [instagram] - Instagram profile URL
+  @param {string} [x_profile] - X (Twitter) profile URL
+  @param {string} [facebook] - Facebook page URL
+  @param {string} [tiktok] - TikTok profile URL
+  @param {string} [whatsapp] - wa.me chat URL
+
+  @example
+  {% render 'irth-social-rail' %}
+{%- enddoc -%}
+
+{% liquid
+  assign instagram_url = instagram | default: 'https://www.instagram.com/irth.house'
+  assign x_url = x_profile | default: 'https://x.com/irthhouse'
+  assign facebook_url = facebook | default: 'https://www.facebook.com/Houseirth'
+  assign tiktok_url = tiktok | default: 'https://www.tiktok.com/@irth.house'
+  assign whatsapp_url = whatsapp | default: 'https://wa.me/201115554108'
+%}
+
+<nav class="irth-social-rail" aria-label="IRTH social links">
+  <a
+    class="irth-social-rail__link"
+    href="{{ instagram_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <svg class="irth-social-rail__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      {%- render 'icon', icon: 'instagram' -%}
+    </svg>
+  </a>
+
+  <a
+    class="irth-social-rail__link"
+    href="{{ x_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="X"
+  >
+    <svg class="irth-social-rail__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      {%- render 'icon', icon: 'x' -%}
+    </svg>
+  </a>
+
+  <a
+    class="irth-social-rail__link"
+    href="{{ facebook_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook"
+  >
+    <svg class="irth-social-rail__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      {%- render 'icon', icon: 'facebook' -%}
+    </svg>
+  </a>
+
+  <a
+    class="irth-social-rail__link"
+    href="{{ tiktok_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="TikTok"
+  >
+    <svg class="irth-social-rail__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      {%- render 'icon', icon: 'tiktok' -%}
+    </svg>
+  </a>
+
+  <a
+    class="irth-social-rail__link irth-social-rail__link--whatsapp"
+    href="{{ whatsapp_url }}"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp"
+  >
+    <span class="irth-social-rail__pulse" aria-hidden="true"></span>
+    <svg class="irth-social-rail__icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+      {%- render 'icon', icon: 'whatsapp' -%}
+    </svg>
+  </a>
+</nav>
+
+{% stylesheet %}
+  .irth-social-rail {
+    --irth-rail-gold: #b0885e;
+
+    position: fixed;
+    inset-inline-start: clamp(8px, 1.1vw, 18px);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 5px;
+
+    border: 1px solid rgb(176 136 94 / 0.22);
+    border-radius: 999px;
+    background: rgb(243 239 231 / 0.55);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 22px rgb(17 17 17 / 0.07);
+    transition: background var(--animation-speed, 0.25s) ease, box-shadow var(--animation-speed, 0.25s) ease;
+  }
+
+  .irth-social-rail:hover {
+    background: rgb(243 239 231 / 0.82);
+    box-shadow: 0 8px 26px rgb(17 17 17 / 0.11);
+  }
+
+  .irth-social-rail__link {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 34px;
+    block-size: 34px;
+    border-radius: 50%;
+    color: rgb(17 17 17 / 0.72);
+    text-decoration: none;
+    transition: color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .irth-social-rail__link:hover {
+    color: var(--irth-rail-gold);
+    background-color: rgb(176 136 94 / 0.12);
+  }
+
+  .irth-social-rail__link:focus-visible {
+    outline: 2px solid var(--irth-rail-gold);
+    outline-offset: 2px;
+  }
+
+  .irth-social-rail__icon {
+    inline-size: 16px;
+    block-size: 16px;
+    display: block;
+    fill: currentcolor;
+  }
+
+  /* WhatsApp is the primary contact channel, so it carries the brand accent */
+  .irth-social-rail__link--whatsapp {
+    color: #f3efe7;
+    background-color: var(--irth-rail-gold);
+  }
+
+  .irth-social-rail__link--whatsapp:hover {
+    color: #f3efe7;
+    background-color: #9c7550;
+  }
+
+  .irth-social-rail__pulse {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--irth-rail-gold);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: irth-social-rail-pulse 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  /* transform + opacity only, so the ring never triggers layout work */
+  @keyframes irth-social-rail-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+
+    70%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .irth-social-rail__pulse {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
+  /* On phones drop to a horizontal pill along the bottom. The Shopify chat
+     launcher is pinned to the physical bottom-right and does NOT mirror in RTL,
+     so anchor to physical left here rather than inline-start, which would flip
+     the pill straight underneath the launcher on Arabic pages. */
+  @media screen and (max-width: 749px) {
+    .irth-social-rail {
+      inset-block-start: auto;
+      inset-block-end: calc(14px + env(safe-area-inset-bottom, 0px));
+      inset-inline: auto;
+      left: 12px;
+      right: auto;
+      translate: none;
+      flex-direction: row;
+    }
+
+    .irth-social-rail__link {
+      inline-size: 32px;
+      block-size: 32px;
+    }
+  }
+
+  @media print {
+    .irth-social-rail {
+      display: none;
+    }
+  }
+{% endstylesheet %}

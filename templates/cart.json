@@ -218,11 +218,17 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "preview_badge_irthjm2": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "disabled": false,
+              "settings": {}
             }
           },
           "block_order": [
             "product_card_gallery_PEPpfq",
             "product_title_WNMpHe",
+            "preview_badge_irthjm2",
             "price_yXfkPX"
           ]
         }

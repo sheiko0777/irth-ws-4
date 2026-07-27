@@ -26,9 +26,13 @@
     endif
     assign should_disable_on_mobile = false
     assign should_open_by_default_on_mobile = false
+    assign should_disable_on_desktop = false
+    assign should_open_by_default_on_desktop = false
     if show_as_accordion == false
       assign should_disable_on_mobile = true
       assign should_open_by_default_on_mobile = true
+      assign should_disable_on_desktop = true
+      assign should_open_by_default_on_desktop = true
     endif
   -%}
   {% capture menu_accordion_children %}
@@ -87,8 +91,8 @@
   {% render 'accordion-custom-component',
     children: menu_accordion_children,
     class: menu_class,
-    disable_on_desktop: true,
-    open_by_default_on_desktop: true,
+    disable_on_desktop: should_disable_on_desktop,
+    open_by_default_on_desktop: should_open_by_default_on_desktop,
     disable_on_mobile: should_disable_on_mobile,
     open_by_default_on_mobile: should_open_by_default_on_mobile
   %}
@@ -119,28 +123,33 @@
     display: none;
   }
 
+  /* Accordion affordance applies at every breakpoint when the block opts in,
+     so the toggle + caret stay visible on desktop as well as mobile. */
+  .menu--accordion .menu__heading--empty {
+    display: flex;
+  }
+
+  .menu--accordion .menu__heading__accordion {
+    display: contents;
+  }
+
+  .menu--accordion .menu__heading__default {
+    display: none;
+  }
+
+  .menu--accordion .details-content {
+    margin-block-start: var(--spacing--size);
+  }
+
+  .menu--accordion .menu__details {
+    padding-inline: 0;
+  }
+
+  .menu--accordion summary {
+    cursor: pointer;
+  }
+
   @media screen and (max-width: 749px) {
-    /* Always show the fallback heading on mobile when accordion is enabled */
-    .menu--accordion .menu__heading--empty {
-      display: flex;
-    }
-
-    .menu--accordion .menu__heading__accordion {
-      display: contents;
-    }
-
-    .menu--accordion .menu__heading__default {
-      display: none;
-    }
-
-    .menu--accordion .details-content {
-      margin-block-start: var(--spacing--size);
-    }
-
-    .menu--accordion .menu__details {
-      padding-inline: 0;
-    }
-
     .menu--dividers .menu__details {
       border-block-end: var(--style-border-width) solid var(--color-border);
     }

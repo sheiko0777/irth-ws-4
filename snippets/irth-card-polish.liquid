@@ -1,0 +1,90 @@
+{%- doc -%}
+  IRTH custom CSS overrides, loaded site-wide from theme.liquid.
+
+  1. Contained image zoom on product cards (below).
+  2. Mobile-only layout fixes (bottom of the stylesheet).
+
+  `.card-gallery` ships with `overflow: hidden`, so scaling the inner image stays
+  clipped to the card and cannot spill over neighbouring cards or shift layout.
+  Only `transform` is animated, so this stays off the layout/paint path.
+
+  @example
+  {% render 'irth-card-polish' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  /* Pointer-capable devices only, and never against an explicit reduced-motion
+     preference - matches how the theme gates its own card hover effects. */
+  @media (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .product-card .product-media__image {
+      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .product-card:hover .product-media__image,
+    .product-card:focus-within .product-media__image {
+      transform: scale(1.045);
+    }
+  }
+
+  /* Category card titles are styled to match the hero CTA: translucent black
+     panel, ivory text, 14px radius — all set through the block's own settings.
+     The two things that have no setting live here: the ivory hairline (the hero
+     button draws its outline with an inset shadow, not a border) and the blur,
+     which keeps the label readable where the photo behind it is busy. */
+  .collection-card__content .text-block {
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    box-shadow: inset 0 0 0 1px rgb(243 239 231 / 90%);
+  }
+
+  @media screen and (max-width: 749px) {
+    /* Trust section (Halal / traceable / origin): stacked, it ran ~500px on a
+       phone and left a dead stretch of scroll. The section now stays a row on
+       mobile (vertical_on_mobile: false); this trims it to a compact icon strip
+       — the supporting sentences are dropped and the labels step down, so the
+       three badges read at a glance instead of scrolling past.
+       Matched on the id suffix so it survives the template id changing. */
+    [id$='__section_trust_irth1'] .text-block.rte {
+      display: none;
+    }
+
+    [id$='__section_trust_irth1'] .text-block.h5 {
+      font-size: var(--font-h6--size);
+      line-height: 1.3;
+    }
+
+    /* Equal thirds; min-width:0 lets the long bilingual labels wrap instead of
+       forcing the flex row wider than the screen. */
+    [id$='__section_trust_irth1'] .group-block {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    /* The three labels wrap to different line counts, so centred items would
+       leave the icons sitting at three different heights. Top-align the row to
+       keep the icon strip level. */
+    [id$='__section_trust_irth1'] .layout-panel-flex {
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    /* Footer accordion headings inherit the h3 preset (32px), which is heading
+       scale, not label scale, on a 390px screen. Step down to the theme's own
+       h5 size instead of a magic number.
+
+       The class is repeated to out-specify base.css's `.h3.h3` doubled
+       selector; matching on .menu__heading rather than .h3 keeps this working
+       if the heading preset is changed in the editor. */
+    footer .menu__heading.menu__heading {
+      font-size: var(--font-h5--size);
+    }
+  }
+
+  /* Desktop footer headings ship at the h3 preset (32px), which reads as a
+     page heading rather than a column label. Step down one notch to h4. */
+  @media screen and (min-width: 750px) {
+    footer .menu__heading.menu__heading {
+      font-size: var(--font-h4--size);
+    }
+  }
+{% endstylesheet %}

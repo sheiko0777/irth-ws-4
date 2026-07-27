@@ -323,6 +323,76 @@
   }
 </script>
 
+{% if request.page_type == 'index' %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "url": {{ request.origin | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{{ request.origin }}/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+{% endif %}
+
+{% if page.handle == 'faq' %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where do IRTH products come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every piece we offer is sourced with intent — Ajwa dates from the palm groves of Madinah Al Munawwarah, Sidr from Madinah and Hadramawt, black seed from Ethiopia, saffron from Iran, olive oil cold-pressed in Sinai, cinnamon from Sri Lanka. Origin is never incidental at IRTH; it is the story." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are your products Halal certified?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every IRTH product is Halal certified and produced in full compliance with food safety standards, honoring the traditions of Madinah Al Munawwarah from source to gift." }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I store my order?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dates are best kept cool — refrigerate in warmer months to preserve their texture. Honey should never be refrigerated; store at room temperature, away from light. Saffron and oils prefer a cool, dark place. Herbal botanicals stay freshest sealed, away from humidity." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the shelf life of IRTH products?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dates typically hold for 6–12 months when stored properly; honey, when sealed, keeps indefinitely; saffron and herbal powders are best enjoyed within a year of opening. Exact guidance is noted on each product page." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is my order shipped?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We take the same care in transit that we take in sourcing — cold-sensitive items are packed accordingly, especially in warmer months. Full shipping details live on our Shipping Policy page." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if something isn't right with my order?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We want every IRTH parcel to feel exactly as it should. Reach out to us directly and we'll make it right — see our Returns Policy for details." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer wholesale or bulk orders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — IRTH partners with hotels, corporate gifting programs, distributors, and institutions across the Gulf, Egypt, Europe, and Africa. Visit our Wholesale page to start a conversation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I reach you?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We're available around the clock — WhatsApp and email, every day of the week. Visit our Contact page for direct lines." }
+      }
+    ]
+  }
+</script>
+{% endif %}
+
 <header-component
   id="header-component"
   class="{{ class }}"
@@ -367,7 +437,7 @@
     class="header__underlay header__underlay-open"
   ></div>
   {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+    <p class="visually-hidden">{{ shop.name }}</p>
   {%- endif -%}
   {% for row in rows %}
     {% liquid

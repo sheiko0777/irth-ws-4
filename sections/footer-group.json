@@ -14,6 +14,122 @@
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
+        "menu_collections_irth1": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-collections",
+            "heading": "تسوق — Shop",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true
+          },
+          "blocks": {}
+        },
+        "menu_company_irth1": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-company",
+            "heading": "قصتنا — Our Story",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true
+          },
+          "blocks": {}
+        },
+        "menu_support_irth1": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-support",
+            "heading": "الشحن — Shipping",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true
+          },
+          "blocks": {}
+        },
+        "menu_policies_irth1": {
+          "type": "menu",
+          "settings": {
+            "menu": "footer-policies",
+            "heading": "السياسات — Policies",
+            "menu_spacing": 12,
+            "show_as_accordion": true,
+            "accordion_icon": "caret",
+            "accordion_dividers": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "menu_collections_irth1",
+        "menu_company_irth1",
+        "menu_support_irth1",
+        "menu_policies_irth1"
+      ],
+      "name": "t:names.footer",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 20,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 8,
+        "padding-block-end": 24
+      }
+    },
+    "footer_utilities_jLGE8U": {
+      "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_jweRK8": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": false,
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "footer_policy_list_VCdnpa": {
+          "type": "footer-policy-list",
+          "settings": {
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "social_links_Ew63Kq": {
+          "type": "social-links",
+          "settings": {
+            "instagram_url": "https://www.instagram.com/irth.house",
+            "twitter_url": "https://x.com/irthhouse",
+            "facebook_url": "https://www.facebook.com/Houseirth",
+            "tiktok_url": "https://www.tiktok.com/@irth.house",
+            "whatsapp_url": "https://wa.me/201115554108"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_jweRK8",
+        "footer_policy_list_VCdnpa",
+        "social_links_Ew63Kq"
+      ],
+      "name": "t:names.utilities",
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 1,
+        "divider_color": "{{ settings.color_palette.color2 }}",
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 20,
+        "padding-block-end": 48
+      }
+    },
+    "footer_newsletter_irth1": {
+      "type": "footer",
+      "name": "Footer — Newsletter",
+      "blocks": {
         "group_H6VpwJ": {
           "type": "group",
           "settings": {
@@ -25,8 +141,8 @@
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
             "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
+            "width": "custom",
+            "custom_width": 46,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
             "height": "fit",
@@ -53,7 +169,7 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>انضم لقائمتنا البريدية — Join our email list</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -77,7 +193,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>احصل على عروض حصرية ووصول مبكر للمنتجات الجديدة. — Get exclusive deals and early access to new products.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -114,7 +230,7 @@
                 "input_type_preset": "paragraph",
                 "style_class": "button-unstyled",
                 "display_type": "arrow",
-                "label": "Sign up",
+                "label": "اشتراك — Sign up",
                 "integrated_button": true,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,
@@ -139,34 +255,23 @@
             "email_signup_crihX7",
             "payment_icons_irth1"
           ]
-        },
-        "menu_collections_irth1": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer-collections",
-            "heading": "Shop",
-            "menu_spacing": 12
-          },
-          "blocks": {}
-        },
-        "menu_company_irth1": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer-company",
-            "heading": "Our Story",
-            "menu_spacing": 12
-          },
-          "blocks": {}
-        },
-        "menu_support_irth1": {
-          "type": "menu",
-          "settings": {
-            "menu": "footer-support",
-            "heading": "Shipping & Care",
-            "menu_spacing": 12
-          },
-          "blocks": {}
-        },
+        }
+      },
+      "block_order": [
+        "group_H6VpwJ"
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "gap": 0,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 28
+      }
+    },
+    "footer_manifesto_irth1": {
+      "type": "footer",
+      "name": "Footer — Manifesto",
+      "blocks": {
         "manifesto_irth1": {
           "type": "group",
           "name": "Manifesto",
@@ -257,71 +362,21 @@
         }
       },
       "block_order": [
-        "group_H6VpwJ",
-        "menu_collections_irth1",
-        "menu_company_irth1",
-        "menu_support_irth1",
         "manifesto_irth1"
       ],
-      "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
+        "gap": 0,
         "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 30,
-        "padding-block-end": 30
-      }
-    },
-    "footer_utilities_jLGE8U": {
-      "type": "footer-utilities",
-      "blocks": {
-        "footer_copyright_jweRK8": {
-          "type": "footer-copyright",
-          "settings": {
-            "show_powered_by": false,
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "footer_policy_list_VCdnpa": {
-          "type": "footer-policy-list",
-          "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "social_links_Ew63Kq": {
-          "type": "social-links",
-          "settings": {
-            "instagram_url": "https://www.instagram.com/irth.house",
-            "twitter_url": "https://x.com/irthhouse",
-            "facebook_url": "https://www.facebook.com/Houseirth",
-            "whatsapp_url": "https://wa.me/201115554108"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
-      ],
-      "name": "t:names.utilities",
-      "settings": {
-        "section_width": "page-width",
-        "gap": 24,
-        "divider_thickness": 1,
-        "divider_color": "{{ settings.color_palette.color2 }}",
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 20,
-        "padding-block-end": 48
+        "padding-block-start": 8,
+        "padding-block-end": 16
       }
     }
   },
   "order": [
+    "footer_newsletter_irth1",
     "footer_m9NzUG",
+    "footer_manifesto_irth1",
     "footer_utilities_jLGE8U"
   ]
 }

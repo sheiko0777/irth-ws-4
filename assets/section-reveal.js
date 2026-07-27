@@ -21,6 +21,8 @@
   const SELECTOR = '[data-animate-on-scroll]';
   const DEFAULT_STAGGER_MS = 50;
   const DEFAULT_DURATION_MS = 320;
+  // Keeps the tail of a long grid from waiting seconds to appear.
+  const MAX_DELAY_MS = 300;
 
   const prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)'
@@ -47,13 +49,72 @@
     return current;
   };
 
+  /**
+   * Resolves the stagger position for an element.
+   *
+   * Elements sharing a group name (e.g. every product card on the page) must not
+   * share one running counter: it never resets, so cards further down the page
+   * inherit ever-larger delays. Instead the index is resolved within the nearest
+   * list/grid, so each row restarts its stagger at zero.
+   *
+   * @param {Element} element
+   * @param {string} group
+   * @returns {number}
+   */
+  const peersWithin = (root, group) =>
+    Array.from(root.querySelectorAll(SELECTOR)).filter(
+      (peer) => (peer.getAttribute('data-reveal-group') || 'default') === group
+    );
+
+  const resolveIndex = (element, group) => {
+    const explicitIndex = element.getAttribute('data-reveal-index');
+    if (explicitIndex !== null) return Number(explicitIndex);
+
+    const explicitScope = element.closest('[data-reveal-scope]');
+    if (explicitScope) {
+      const index = peersWithin(explicitScope, group).indexOf(element);
+      if (index !== -1) return index;
+    }
+
+    // Climb until we hit the ancestor that actually groups this element with its
+    // siblings (markup varies: `.resource-list` of divs here, `ul > li` elsewhere).
+    // Bounded by the enclosing section so a new section restarts at zero rather
+    // than continuing the previous section's count.
+    const boundary = element.closest('.shopify-section');
+    let node = element.parentElement;
+
+    while (node) {
+      const peers = peersWithin(node, group);
+      if (peers.length > 1) {
+        const index = peers.indexOf(element);
+        if (index !== -1) return index;
+      }
+      if (node === boundary) break;
+      node = node.parentElement;
+    }
+
+    return nextIndexForGroup(group);
+  };
+
+  // Tells the inline bootstrap's watchdog the reveal is running, so it leaves the
+  // [data-reveal-ready] gate armed. Anything that returns before an observer is
+  // actually watching must disarm the gate instead, or the content stays hidden.
+  const disarmGate = () =>
+    document.documentElement.removeAttribute('data-reveal-ready');
+
   const init = () => {
+    window.__irthRevealInit = true;
+
     const elements = Array.from(document.querySelectorAll(SELECTOR));
 
-    if (elements.length === 0) return;
+    if (elements.length === 0) {
+      disarmGate();
+      return;
+    }
 
     if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
       revealAllInstantly(elements);
+      disarmGate();
       return;
     }
 
@@ -75,13 +136,9 @@
             element.getAttribute('data-reveal-stagger-ms') ||
               DEFAULT_STAGGER_MS
           );
-          const explicitIndex = element.getAttribute('data-reveal-index');
-          const index =
-            explicitIndex !== null
-              ? Number(explicitIndex)
-              : nextIndexForGroup(group);
+          const index = resolveIndex(element, group);
 
-          revealElement(element, index * staggerMs);
+          revealElement(element, Math.min(index * staggerMs, MAX_DELAY_MS));
           obs.unobserve(element);
         });
       },
