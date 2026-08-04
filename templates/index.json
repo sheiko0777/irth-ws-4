@@ -1055,11 +1055,16 @@
         "padding-block-start": 72,
         "padding-block-end": 72
       }
+    },
+    "irth_gold_membership_1": {
+      "type": "irth-gold-membership",
+      "settings": {}
     }
   },
   "order": [
     "hero_jVaWmY",
     "hero_statement_irth1",
+    "irth_gold_membership_1",
     "collection_list_irth1",
     "media_with_content_irth1",
     "section_trust_irth1",

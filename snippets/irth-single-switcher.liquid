@@ -1,0 +1,29 @@
+{%- doc -%}
+  Keeps exactly one visible language/currency switcher.
+
+  The theme's own localization-form (rendered in the header dropdown and the
+  mobile drawer) already routes correctly to every published locale and to
+  real Shopify Markets currencies — verified live. The Transtore app injects
+  a second, independent switcher plus an auto-opening geolocation popup on
+  every page. Rather than showing both, this hides Transtore's front-end UI
+  so only the theme's native switcher is visible. Transtore itself stays
+  installed; nothing here touches the app or its settings — this only
+  affects what renders on the storefront.
+
+  @example
+  {% render 'irth-single-switcher' %}
+{%- enddoc -%}
+
+{% stylesheet %}
+  .ts-switcher-individual,
+  .ts-geo {
+    display: none !important;
+  }
+
+  /* The geo popup sets a class on <html> that locks page scroll while open.
+     With the popup hidden, that lock would otherwise strand the page
+     unscrollable, so it is released here. */
+  html.ts-geo-opened {
+    overflow: auto !important;
+  }
+{% endstylesheet %}
