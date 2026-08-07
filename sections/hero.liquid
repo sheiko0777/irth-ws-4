@@ -770,20 +770,30 @@
 {% comment %}
   All 4 video_tag calls above ship with autoplay: false and preload: 'none' —
   a <video autoplay> element still triggers a full download even while its
-  wrapper is CSS-hidden below 750px (confirmed live: it added the hero video's
-  full weight to the mobile page load on top of the mobile art-direction
-  image, not instead of it). Loading/playing is deferred to this script,
-  gated on viewport width, so a mobile visitor never fetches the video at
-  all — only the poster image.
+  wrapper is CSS-hidden below 750px (confirmed live). Loading/playing is
+  deferred to this script instead, gated on viewport width, so each
+  breakpoint only ever fetches its own video.
+
+  Mobile gets its own compressed file when one is set (video_1_mobile /
+  video_2_mobile with custom_mobile_media on) — that plays here same as
+  desktop's. When no dedicated mobile video exists, the theme's own fallback
+  reuses the desktop wrapper for both breakpoints (it carries both
+  hero__media-wrapper--desktop and --mobile classes) — that shared case is
+  only started on a desktop-width screen, so a phone never downloads the
+  full-size desktop video through that fallback path.
 {% endcomment %}
 {% javascript %}
   (function () {
-    if (!window.matchMedia('(min-width: 750px)').matches) return;
+    var isDesktop = window.matchMedia('(min-width: 750px)').matches;
+    var wrapperClass = isDesktop ? 'hero__media-wrapper--desktop' : 'hero__media-wrapper--mobile';
 
-    document.querySelectorAll('.hero__media').forEach(function (el) {
-      if (el.tagName !== 'VIDEO') return;
-      el.preload = 'auto';
-      el.play().catch(function () {});
+    document.querySelectorAll('.' + wrapperClass + ' video.hero__media').forEach(function (video) {
+      var sharedWrapper =
+        video.closest('.hero__media-wrapper--desktop') && video.closest('.hero__media-wrapper--mobile');
+      if (sharedWrapper && !isDesktop) return;
+
+      video.preload = 'auto';
+      video.play().catch(function () {});
     });
   })();
 {% endjavascript %}
