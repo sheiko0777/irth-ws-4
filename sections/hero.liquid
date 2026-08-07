@@ -112,6 +112,16 @@
   if section.index == 1
     assign fetch_priority = 'high'
   endif
+
+  # Video poster: assigned in its own step, not inline in video_tag's argument
+  # list, since Liquid filter arguments don't reliably support a piped filter
+  # chain as their value. image_url applied directly to the video setting
+  # (not a nested .preview_image property) is the pattern shopify.dev's video
+  # object docs show. Falls back to blank/nil harmlessly if a slot is unused.
+  assign poster_1 = section.settings.video_1 | image_url: width: 1600
+  assign poster_1_mobile = section.settings.video_1_mobile | image_url: width: 1200
+  assign poster_2 = section.settings.video_2 | image_url: width: 1600
+  assign poster_2_mobile = section.settings.video_2_mobile | image_url: width: 1200
 %}
 
 {% capture media_slot_1 %}
@@ -169,8 +179,9 @@
       {{
         section.settings.video_1
         | video_tag:
-          poster: nil,
-          autoplay: true,
+          poster: poster_1,
+          autoplay: false,
+          preload: 'none',
           loop: true,
           controls: false,
           muted: true,
@@ -205,8 +216,9 @@
         {{
           section.settings.video_1_mobile
           | video_tag:
-            poster: nil,
-            autoplay: true,
+            poster: poster_1_mobile,
+            autoplay: false,
+            preload: 'none',
             loop: true,
             controls: false,
             muted: true,
@@ -273,8 +285,9 @@
       {{
         section.settings.video_2
         | video_tag:
-          poster: nil,
-          autoplay: true,
+          poster: poster_2,
+          autoplay: false,
+          preload: 'none',
           loop: true,
           controls: false,
           muted: true,
@@ -309,8 +322,9 @@
         {{
           section.settings.video_2_mobile
           | video_tag:
-            poster: nil,
-            autoplay: true,
+            poster: poster_2_mobile,
+            autoplay: false,
+            preload: 'none',
             loop: true,
             controls: false,
             muted: true,
@@ -752,6 +766,27 @@
     }
   }
 {% endstylesheet %}
+
+{% comment %}
+  All 4 video_tag calls above ship with autoplay: false and preload: 'none' —
+  a <video autoplay> element still triggers a full download even while its
+  wrapper is CSS-hidden below 750px (confirmed live: it added the hero video's
+  full weight to the mobile page load on top of the mobile art-direction
+  image, not instead of it). Loading/playing is deferred to this script,
+  gated on viewport width, so a mobile visitor never fetches the video at
+  all — only the poster image.
+{% endcomment %}
+{% javascript %}
+  (function () {
+    if (!window.matchMedia('(min-width: 750px)').matches) return;
+
+    document.querySelectorAll('.hero__media').forEach(function (el) {
+      if (el.tagName !== 'VIDEO') return;
+      el.preload = 'auto';
+      el.play().catch(function () {});
+    });
+  })();
+{% endjavascript %}
 
 {% schema %}
 {
