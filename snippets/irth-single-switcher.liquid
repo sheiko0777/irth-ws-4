@@ -10,6 +10,16 @@
   installed; nothing here touches the app or its settings — this only
   affects what renders on the storefront.
 
+  Reported symptom this is also aimed at: visitors on Android/iPhone/tablet
+  saw scrolling stop intermittently. Transtore's geo popup locks page scroll
+  by toggling a class on <html> while it is "open" — with the popup hidden
+  via CSS, that class can still get added (and, on a slow connection, added
+  before this file's own stylesheet has loaded) without ever being cleared,
+  stranding the page unscrollable. The stylesheet override handles the
+  normal case; the script below is a belt-and-suspenders fix that actively
+  strips the class the moment it appears, so a cascade/timing loss never
+  leaves a real visitor stuck.
+
   @example
   {% render 'irth-single-switcher' %}
 {%- enddoc -%}
@@ -27,3 +37,22 @@
     overflow: auto !important;
   }
 {% endstylesheet %}
+
+<script>
+  (function () {
+    var html = document.documentElement;
+
+    var clearLock = function () {
+      if (html.classList.contains('ts-geo-opened')) {
+        html.classList.remove('ts-geo-opened');
+      }
+    };
+
+    clearLock();
+
+    new MutationObserver(clearLock).observe(html, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  })();
+</script>
