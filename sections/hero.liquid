@@ -771,26 +771,42 @@
   All 4 video_tag calls above ship with autoplay: false and preload: 'none' —
   a <video autoplay> element still triggers a full download even while its
   wrapper is CSS-hidden below 750px (confirmed live). Loading/playing is
-  deferred to this script instead, gated on viewport width, so each
-  breakpoint only ever fetches its own video.
+  deferred to this script instead.
+
+  Three bands, not two — the wrapper's own visibility CSS only knows
+  mobile/desktop at the 749px cut, but the *video* decision needs a third,
+  wider "confirmed desktop" band: a Samsung Z Fold unfolded (~884px) or a
+  tablet in that range is still touch, still often on cellular, but sits
+  above 749px, so it was silently getting the full desktop video (confirmed
+  live: 2.7MB fetched at 884px). 990px matches this theme's own existing
+  large-mobile/tablet cutoff (used in header, footer, filters elsewhere).
+
+  - < 750px: mobile wrapper is visible → play its own light video.
+  - 750–989px: desktop wrapper is visible (its art-direction/crop is still
+    correct here) but neither video loads — poster only, no motion. This is
+    the tablet/foldable band the complaints came from.
+  - >= 990px: desktop wrapper is visible → play the full video.
 
   Mobile gets its own compressed file when one is set (video_1_mobile /
-  video_2_mobile with custom_mobile_media on) — that plays here same as
-  desktop's. When no dedicated mobile video exists, the theme's own fallback
-  reuses the desktop wrapper for both breakpoints (it carries both
-  hero__media-wrapper--desktop and --mobile classes) — that shared case is
-  only started on a desktop-width screen, so a phone never downloads the
-  full-size desktop video through that fallback path.
+  video_2_mobile with custom_mobile_media on). When no dedicated mobile
+  video exists, the theme's own fallback reuses the desktop wrapper for
+  both breakpoints (it carries both hero__media-wrapper--desktop and
+  --mobile classes) — that shared case only starts in the >=990px band, so
+  a phone or tablet never downloads the full-size video through it.
 {% endcomment %}
 {% javascript %}
   (function () {
-    var isDesktop = window.matchMedia('(min-width: 750px)').matches;
-    var wrapperClass = isDesktop ? 'hero__media-wrapper--desktop' : 'hero__media-wrapper--mobile';
+    var mobileWrapperVisible = window.matchMedia('(max-width: 749px)').matches;
+    var trueDesktop = window.matchMedia('(min-width: 990px)').matches;
+
+    if (!mobileWrapperVisible && !trueDesktop) return; // 750–989px: poster only
+
+    var wrapperClass = mobileWrapperVisible ? 'hero__media-wrapper--mobile' : 'hero__media-wrapper--desktop';
 
     document.querySelectorAll('.' + wrapperClass + ' video.hero__media').forEach(function (video) {
       var sharedWrapper =
         video.closest('.hero__media-wrapper--desktop') && video.closest('.hero__media-wrapper--mobile');
-      if (sharedWrapper && !isDesktop) return;
+      if (sharedWrapper && mobileWrapperVisible) return;
 
       video.preload = 'auto';
       video.play().catch(function () {});
