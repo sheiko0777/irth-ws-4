@@ -17,6 +17,22 @@
   dir="{% if locale_iso == 'ar' %}rtl{% else %}ltr{% endif %}"
 >
   <head>
+    {%- comment -%}
+      Resource hints for third-party apps confirmed slow in a live network
+      trace (2026-08-08): static.klaviyo.com and static-tracking.klaviyo.com
+      each took 3-6s per request — the single largest contributor to page
+      load time, well ahead of anything in the theme itself. Their <script>
+      tags are already async (correctly non-blocking), so this can't make
+      Klaviyo's own servers respond faster; it only starts the DNS/TCP/TLS
+      handshake as soon as parsing begins instead of when the script tag is
+      reached later in <head>, shaving real time off whichever request goes
+      out first. Purely additive — no visual or behavioral change.
+    {%- endcomment -%}
+    <link rel="preconnect" href="https://static.klaviyo.com" crossorigin>
+    <link rel="preconnect" href="https://static-tracking.klaviyo.com" crossorigin>
+    <link rel="dns-prefetch" href="https://static.klaviyo.com">
+    <link rel="dns-prefetch" href="https://static-tracking.klaviyo.com">
+
     <link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
     <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ 'favicon-96x96.png' | asset_url }}">

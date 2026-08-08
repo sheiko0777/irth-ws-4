@@ -107,6 +107,15 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 6px 22px rgb(17 17 17 / 0.07);
     transition: background var(--animation-speed, 0.25s) ease, box-shadow var(--animation-speed, 0.25s) ease;
+
+    /* This is fixed and on screen for the entire scroll, and backdrop-filter
+       is one of the most expensive things a browser recomputes per frame —
+       a likely contributor to the reported scroll lag on mid-range Android.
+       will-change + contain promote it to its own stable compositor layer so
+       maintaining the blur costs less without changing how it looks. Same
+       pixels, cheaper to keep painting. */
+    will-change: transform;
+    contain: layout paint;
   }
 
   .irth-social-rail:hover {
