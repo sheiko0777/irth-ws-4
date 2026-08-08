@@ -473,6 +473,14 @@
 <div
   id="Hero-{{ section.id }}"
   class="hero{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
+  {% comment %}
+    Read by the tablet/foldable band in the script below (750-989px):
+    a lighter video than the desktop file, swapped onto the same visible
+    desktop wrapper rather than requiring a third schema setting. Hardcoded
+    rather than a theme setting since this is a one-off performance asset
+    for this specific hero, not merchant-facing content.
+  {% endcomment %}
+  data-tablet-video-src="https://cdn.shopify.com/videos/c/vp/42972a1626f348779cdfc3650cdaaeb2/42972a1626f348779cdfc3650cdaaeb2.SD-480p-1.0Mbps-91066025.mp4"
   style="
     --hero-border-style: {{ section.settings.border }};
     --hero-border-width: {{ section.settings.border_width }}px;
@@ -783,9 +791,12 @@
 
   - < 750px: mobile wrapper is visible → play its own light video.
   - 750–989px: desktop wrapper is visible (its art-direction/crop is still
-    correct here) but neither video loads — poster only, no motion. This is
-    the tablet/foldable band the complaints came from.
-  - >= 990px: desktop wrapper is visible → play the full video.
+    correct here) — the tablet/foldable band the complaints came from. If
+    the section carries data-tablet-video-src, that file is swapped onto
+    the desktop wrapper's <video> and played; otherwise this band falls
+    back to poster-only, no motion.
+  - >= 990px: desktop wrapper is visible → play its own full video,
+    untouched by the swap above.
 
   Mobile gets its own compressed file when one is set (video_1_mobile /
   video_2_mobile with custom_mobile_media on). When no dedicated mobile
@@ -798,15 +809,30 @@
   (function () {
     var mobileWrapperVisible = window.matchMedia('(max-width: 749px)').matches;
     var trueDesktop = window.matchMedia('(min-width: 990px)').matches;
+    var tabletBand = !mobileWrapperVisible && !trueDesktop;
 
-    if (!mobileWrapperVisible && !trueDesktop) return; // 750–989px: poster only
+    if (mobileWrapperVisible) {
+      document.querySelectorAll('.hero__media-wrapper--mobile video.hero__media').forEach(function (video) {
+        var sharedWrapper =
+          video.closest('.hero__media-wrapper--desktop') && video.closest('.hero__media-wrapper--mobile');
+        if (sharedWrapper) return; // fallback case only ever loads in the true-desktop band below
 
-    var wrapperClass = mobileWrapperVisible ? 'hero__media-wrapper--mobile' : 'hero__media-wrapper--desktop';
+        video.preload = 'auto';
+        video.play().catch(function () {});
+      });
+      return;
+    }
 
-    document.querySelectorAll('.' + wrapperClass + ' video.hero__media').forEach(function (video) {
-      var sharedWrapper =
-        video.closest('.hero__media-wrapper--desktop') && video.closest('.hero__media-wrapper--mobile');
-      if (sharedWrapper && mobileWrapperVisible) return;
+    document.querySelectorAll('.hero__media-wrapper--desktop video.hero__media').forEach(function (video) {
+      if (tabletBand) {
+        var tabletSrc = video.closest('.hero')?.dataset.tabletVideoSrc;
+        if (!tabletSrc) return; // no lighter file provided for this hero: poster only
+
+        // A <video src> attribute takes priority over any <source> children,
+        // so this alone is enough to swap the fetched file without touching
+        // the element's original (desktop) markup.
+        video.src = tabletSrc;
+      }
 
       video.preload = 'auto';
       video.play().catch(function () {});
