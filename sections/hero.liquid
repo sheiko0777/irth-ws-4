@@ -828,10 +828,26 @@
         var tabletSrc = video.closest('.hero')?.dataset.tabletVideoSrc;
         if (!tabletSrc) return; // no lighter file provided for this hero: poster only
 
+        // Calling play() in the same tick as the src swap below races the
+        // browser's own "abort old load, start new load" sequence — losing
+        // that race silently rejects play() (caught below) with nothing to
+        // retry it once the new source actually finishes loading. Confirmed
+        // live: readyState reached 4 (fully loaded) while the video stayed
+        // paused at currentTime 0. Waiting for loadeddata removes the race.
+        video.addEventListener(
+          'loadeddata',
+          function onTabletVideoReady() {
+            video.play().catch(function () {});
+          },
+          { once: true }
+        );
+
         // A <video src> attribute takes priority over any <source> children,
         // so this alone is enough to swap the fetched file without touching
         // the element's original (desktop) markup.
+        video.preload = 'auto';
         video.src = tabletSrc;
+        return;
       }
 
       video.preload = 'auto';
