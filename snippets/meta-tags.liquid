@@ -123,7 +123,9 @@
   {{ page_title }}
   {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
   {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-  {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  {%- comment -%} IRTH: the home SEO title already carries the brand without the " - " separator, so match on the latin brand part too {%- endcomment -%}
+  {%- assign brand_short = shop.name | split: ' - ' | first -%}
+  {%- unless page_title contains shop.name or page_title contains brand_short %} &ndash; {{ shop.name }}{% endunless -%}
 </title>
 
 <link

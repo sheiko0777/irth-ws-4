@@ -30,7 +30,7 @@
 /* Accordion / filter carets should not mirror */
 [dir="rtl"] .accordion-row__icon,
 [dir="rtl"] .disclosures summary::after,
-[dir="rtl"] [class*="caret"] {
+[dir="rtl"] .icon-caret {
   transform: scaleX(-1);
 }
 
