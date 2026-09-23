@@ -24,25 +24,10 @@
             "case": "none"
           },
           "blocks": {}
-        },
-        "announcement_irthGold1": {
-          "type": "_announcement",
-          "settings": {
-            "text": "الموقع في مرحلة تجريبية — الإطلاق الرسمي ١ أكتوبر ٢٠٢٦ &middot; انضم لعضوية إرث الذهبية الآن &middot; Now in Preview — Official Launch October 1st &middot; Join IRTH Gold Membership",
-            "link": "#irth-gold-membership",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "weight": "600",
-            "letter_spacing": "normal",
-            "case": "none",
-            "text_color": "#b0885e"
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "announcement_BxgCk9",
-        "announcement_irthGold1"
+        "announcement_BxgCk9"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
