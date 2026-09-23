@@ -78,6 +78,13 @@
     footer .menu__heading.menu__heading {
       font-size: var(--font-h5--size);
     }
+
+    /* Footer links rendered 18px tall — too small a tap target on a phone.
+       Pad them to ~40px without changing the type or the visual rhythm much. */
+    footer .menu__item > a {
+      display: inline-block;
+      padding-block: 11px;
+    }
   }
 
   /* Desktop footer headings ship at the h3 preset (32px), which reads as a
