@@ -85,6 +85,15 @@
       display: inline-block;
       padding-block: 11px;
     }
+
+    /* Heritage story: the image took 70svh (~570px) plus 67px padding either
+       side, so the section alone ran past a full phone screen. The section sets
+       these as inline custom properties, hence !important. */
+    [id$='__media_with_content_irth1'] .section {
+      --media-height-mobile: 46svh !important;
+      --padding-block-start: 32px !important;
+      --padding-block-end: 40px !important;
+    }
   }
 
   /* Desktop footer headings ship at the h3 preset (32px), which reads as a

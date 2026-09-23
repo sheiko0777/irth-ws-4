@@ -17,7 +17,18 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "حلال معتمد &middot; تتبع كامل ١٠٠٪ &middot; مصدرها المدينة المنورة &middot; Halal Certified &middot; 100% Traceable &middot; Sourced from Madinah Al Munawwarah",
+            "text": "حلال معتمد &middot; تتبع كامل ١٠٠٪ &middot; من المدينة المنورة",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_irthEn1": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Halal Certified &middot; 100% Traceable &middot; From Madinah",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "letter_spacing": "normal",
@@ -27,7 +38,8 @@
         }
       },
       "block_order": [
-        "announcement_BxgCk9"
+        "announcement_BxgCk9",
+        "announcement_irthEn1"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
@@ -36,8 +48,8 @@
         "background_color": "{{ settings.color_palette.background }}",
         "divider_width": 1,
         "divider_color": "{{ settings.color_palette.color2 }}",
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "padding-block-start": 10,
+        "padding-block-end": 10
       }
     },
     "header_section": {
