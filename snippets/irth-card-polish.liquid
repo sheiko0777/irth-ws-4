@@ -94,6 +94,14 @@
       --padding-block-start: 32px !important;
       --padding-block-end: 40px !important;
     }
+
+    /* Homepage product rows swipe on mobile, but at 44cqw exactly two cards
+       filled the screen and the third started at the edge — nothing hinted
+       the row scrolls. 38cqw leaves ~40px of the third card peeking in. */
+    [id$='__product_list_fa6P9H'] .resource-list__carousel .resource-list__slide,
+    [id$='__product_list_giftboxes'] .resource-list__carousel .resource-list__slide {
+      --slide-width: 38cqw;
+    }
   }
 
   /* Desktop footer headings ship at the h3 preset (32px), which reads as a
