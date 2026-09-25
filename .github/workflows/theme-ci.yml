@@ -30,20 +30,30 @@ jobs:
           python-version: '3.12'
       - run: python3 .github/scripts/check-asset-budget.py
 
+  lighthouse-enabled:
+    name: Lighthouse secrets present?
+    runs-on: ubuntu-latest
+    outputs:
+      enabled: ${{ steps.check.outputs.enabled }}
+    steps:
+      - id: check
+        env:
+          SHOP_STORE: ${{ secrets.SHOP_STORE }}
+        run: echo "enabled=${{ env.SHOP_STORE != '' }}" >> "$GITHUB_OUTPUT"
+
   lighthouse:
     name: Lighthouse
-    runs-on: ubuntu-latest
     # Uploads this branch as a temporary development theme and audits it.
     # Needs repo secrets SHOP_STORE (veje0r-0f.myshopify.com) plus either
     # SHOP_CLIENT_ID/SHOP_CLIENT_SECRET (Dev Dashboard app) or SHOP_ACCESS_TOKEN.
-    # Skipped until they are configured, and on PRs from forks.
-    env:
-      SHOP_STORE: ${{ secrets.SHOP_STORE }}
+    # Skipped at job level until they are configured (and on PRs from forks), so the
+    # action's Docker image is not built for nothing.
+    needs: lighthouse-enabled
+    if: needs.lighthouse-enabled.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-        if: env.SHOP_STORE != ''
       - uses: Shopify/lighthouse-ci-action@v1.4.0
-        if: env.SHOP_STORE != ''
         with:
           store: ${{ secrets.SHOP_STORE }}
           client_id: ${{ secrets.SHOP_CLIENT_ID }}
