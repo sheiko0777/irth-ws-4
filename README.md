@@ -7,7 +7,7 @@ Built on Shopify's Horizon architecture (Online Store 2.0, theme blocks), then c
 ## Custom work
 
 **Brand & typography**
-- IRTH typefaces bundled in `assets/` (Sakkal Seta, DecoType Thuluth, A-Suls) with Arabic fallbacks.
+- IRTH typefaces bundled in `assets/` (Sakkal Seta, DecoType Thuluth, A-Suls, Thmanyah Serif, Ciguatera) as WOFF2, Arabic faces subset to their `unicode-range`; original TTF/OTF kept as fallbacks (`snippets/custom-fonts.liquid`).
 - IRTH palette (ivory `#F3EFE7`, black `#111111`, gold `#B0885E`) applied across sections.
 - `snippets/irth-card-polish.liquid` — card, footer and mobile layout refinements.
 - `assets/liquid-glass-header.css` — translucent header treatment.
@@ -31,6 +31,14 @@ Built on Shopify's Horizon architecture (Online Store 2.0, theme blocks), then c
 - `snippets/irth-social-rail.liquid` — floating social rail with WhatsApp call-to-action (RTL-aware, avoids the chat launcher).
 - `sections/irth-gold-membership.liquid` — founding-member sign-up section (Shopify customer form with tags).
 - Category carousel, heritage story and trust sections configured in `templates/index.json`.
+
+## CI
+
+`.github/workflows/theme-ci.yml` runs on every pull request:
+
+- **Theme Check** — `shopify theme check` (config in `.theme-check.yml`).
+- **Asset budget** — `.github/scripts/check-asset-budget.py` caps asset sizes (favicon ≤ 50 KB, any asset ≤ 300 KB) and requires a WOFF2 next to every TTF/OTF.
+- **Lighthouse** — Shopify's Lighthouse CI action against a temporary dev theme. Runs once the repo secrets `SHOP_STORE` plus `SHOP_CLIENT_ID`/`SHOP_CLIENT_SECRET` (or `SHOP_ACCESS_TOKEN`) are set; optional `SHOP_PASSWORD`, `SHOP_LIVE_THEME_ID`.
 
 ## Development
 
