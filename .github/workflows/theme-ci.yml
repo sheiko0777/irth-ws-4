@@ -1,0 +1,60 @@
+name: Theme CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Run Shopify Theme Check
+        run: npx --yes @shopify/cli@3 theme check --path . --fail-level error
+
+  asset-budget:
+    name: Asset budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: python3 .github/scripts/check-asset-budget.py
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    # Uploads this branch as a temporary development theme and audits it.
+    # Needs repo secrets SHOP_STORE (veje0r-0f.myshopify.com) plus either
+    # SHOP_CLIENT_ID/SHOP_CLIENT_SECRET (Dev Dashboard app) or SHOP_ACCESS_TOKEN.
+    # Skipped until they are configured, and on PRs from forks.
+    env:
+      SHOP_STORE: ${{ secrets.SHOP_STORE }}
+    steps:
+      - uses: actions/checkout@v7
+        if: env.SHOP_STORE != ''
+      - uses: Shopify/lighthouse-ci-action@v1.4.0
+        if: env.SHOP_STORE != ''
+        with:
+          store: ${{ secrets.SHOP_STORE }}
+          client_id: ${{ secrets.SHOP_CLIENT_ID }}
+          client_secret: ${{ secrets.SHOP_CLIENT_SECRET }}
+          access_token: ${{ secrets.SHOP_ACCESS_TOKEN }}
+          password: ${{ secrets.SHOP_PASSWORD }}
+          # Pull live settings and JSON templates so the audit matches production.
+          pull_theme: ${{ secrets.SHOP_LIVE_THEME_ID }}
+          product_handle: ajwa-madina-dates
+          collection_handle: all
+          # Floors set just under today's baseline so regressions fail;
+          # raise them as the performance work lands.
+          lhci_min_score_performance: 0.35
+          lhci_min_score_accessibility: 0.9
