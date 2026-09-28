@@ -1,0 +1,8 @@
+# Shopify Theme Check config — run with `shopify theme check`.
+extends: theme-check:recommended
+
+# App blocks (e.g. Judge.me) are referenced in templates as shopify://apps/...
+# They live in the installed app, not in this repo, so this check reports every
+# one of them as missing. Disabled to keep CI signal meaningful.
+JSONMissingBlock:
+  enabled: false

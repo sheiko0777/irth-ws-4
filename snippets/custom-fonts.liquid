@@ -6,11 +6,15 @@
 
    Rendered as a snippet (not a static asset) so the asset_url filter below actually
    resolves — Shopify serves assets/*.css.liquid as a raw static file and never runs
-   Liquid inside it, which silently broke these @font-face src URLs. */
+   Liquid inside it, which silently broke these @font-face src URLs.
+
+   Each face loads a WOFF2 first (Arabic faces subset to their unicode-range, ~75%
+   smaller) and keeps the original TTF/OTF as a fallback. */
 
 @font-face {
   font-family: 'IRTH Ciguatera';
-  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-Ciguatera.otf?v=1782953230') format('opentype');
+  src: url('{{ "irth-ciguatera.woff2" | asset_url }}') format('woff2'),
+    url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-Ciguatera.otf?v=1782953230') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -18,7 +22,8 @@
 
 @font-face {
   font-family: 'IRTH A Suls';
-  src: url('{{ "irth-a-suls.ttf" | asset_url }}') format('truetype');
+  src: url('{{ "irth-a-suls.woff2" | asset_url }}') format('woff2'),
+    url('{{ "irth-a-suls.ttf" | asset_url }}') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -27,7 +32,8 @@
 
 @font-face {
   font-family: 'IRTH Thmanyah Serif';
-  src: url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ThmanyahSerifBold.otf?v=1782953230') format('opentype');
+  src: url('{{ "irth-thmanyah-serif-bold.woff2" | asset_url }}') format('woff2'),
+    url('https://cdn.shopify.com/s/files/1/0773/8238/5802/files/IRTH-ThmanyahSerifBold.otf?v=1782953230') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -38,7 +44,8 @@
    earlier A Suls file. Served as a theme asset, not Shopify Files. */
 @font-face {
   font-family: 'IRTH DecoType Thuluth';
-  src: url('{{ "irth-decotype-thuluth.ttf" | asset_url }}') format('truetype');
+  src: url('{{ "irth-decotype-thuluth.woff2" | asset_url }}') format('woff2'),
+    url('{{ "irth-decotype-thuluth.ttf" | asset_url }}') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -48,7 +55,8 @@
 /* Sakkal Seta Pro — second Thuluth-style candidate, verified real glyph outlines. */
 @font-face {
   font-family: 'IRTH Sakkal Seta';
-  src: url('{{ "irth-sakkal-seta.ttf" | asset_url }}') format('truetype');
+  src: url('{{ "irth-sakkal-seta.woff2" | asset_url }}') format('woff2'),
+    url('{{ "irth-sakkal-seta.ttf" | asset_url }}') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
