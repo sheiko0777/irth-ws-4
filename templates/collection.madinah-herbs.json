@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "section": {
@@ -71,30 +80,29 @@
         "section_width": "page-width",
         "section_height_custom": 50,
         "background_media": "image",
-        "background_image": "shopify://shop_images/irth-hero-herbs.png",
         "background_color": "{{ settings.color_palette.background }}",
         "video_position": "cover",
+        "background_image": "shopify://shop_images/irth-hero-herbs.png",
         "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
         "toggle_overlay": true,
         "overlay_color": "#12121266",
         "overlay_style": "solid",
         "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
         "padding-block-start": 96,
         "padding-block-end": 96
       }
     },
     "trust_strip": {
       "type": "section",
-      "name": "Trust strip",
       "blocks": {
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>حلال معتمد &middot; منشأ يمكن تتبعه &middot; يُشحن من المدينة المنورة &middot; Halal Certified &middot; Traceable Origin &middot; Ships from Madinah Al Munawwarah</p>",
+            "text": "<p>Halal Certified &middot; Traceable Origin &middot; Ships from Madinah Al Munawwarah</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "center",
@@ -118,6 +126,7 @@
       "block_order": [
         "text"
       ],
+      "name": "Trust strip",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -233,7 +242,6 @@
             },
             "preview_badge_irthjm6": {
               "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "disabled": false,
               "settings": {}
             }
           },

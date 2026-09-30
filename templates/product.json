@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -15,7 +16,7 @@
           "type": "disclosures",
           "name": "t:names.disclosures",
           "settings": {
-            "heading": "الإفصاحات — Disclosures",
+            "heading": "Disclosures",
             "heading_preset": "h5",
             "open_by_default": false,
             "icon": "caret",
@@ -29,6 +30,16 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "review_widget_irth1": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         },
         "media-gallery": {
           "type": "_product-media-gallery",
@@ -117,6 +128,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
                 "padding-block-start": 0,
@@ -151,6 +163,10 @@
                   },
                   "blocks": {}
                 },
+                "preview_badge_page_irth1": {
+                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                  "settings": {}
+                },
                 "price_tVjtKg": {
                   "type": "price",
                   "settings": {
@@ -172,11 +188,6 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "preview_badge_page_irth1": {
-                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                  "disabled": false,
-                  "settings": {}
                 }
               },
               "block_order": [
@@ -280,6 +291,214 @@
               },
               "block_order": []
             },
+            "group_trust_irth1": {
+              "type": "group",
+              "name": "Trust badges",
+              "settings": {
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 20,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "background_media": "none",
+                "background_color": "",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "badge_1": {
+                  "type": "group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 6,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background_media": "none",
+                    "background_color": "",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_color": "",
+                    "border_radius": 0,
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "check_box",
+                        "width": 20,
+                        "link": "",
+                        "open_in_new_tab": false,
+                        "icon_color": ""
+                      },
+                      "blocks": {}
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Halal Certified</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.875rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon",
+                    "text"
+                  ]
+                },
+                "badge_2": {
+                  "type": "group",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 6,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "background_media": "none",
+                    "background_color": "",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_color": "",
+                    "border_radius": 0,
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon": {
+                      "type": "icon",
+                      "settings": {
+                        "icon": "map_pin",
+                        "width": 20,
+                        "link": "",
+                        "open_in_new_tab": false,
+                        "icon_color": ""
+                      },
+                      "blocks": {}
+                    },
+                    "text": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Traceable Origin</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "0.875rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon",
+                    "text"
+                  ]
+                }
+              },
+              "block_order": [
+                "badge_1",
+                "badge_2"
+              ]
+            },
             "text_aEtTtq": {
               "type": "text",
               "name": "Product description",
@@ -306,132 +525,20 @@
               },
               "blocks": {}
             },
-            "group_trust_irth1": {
-              "type": "group",
-              "name": "Trust badges",
-              "settings": {
-                "content_direction": "row",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "gap": 20,
-                "width": "fill",
-                "custom_width": 100,
-                "height": "fit",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "badge_1": {
-                  "type": "group",
-                  "settings": {
-                    "content_direction": "row",
-                    "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "gap": 6,
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "icon": {
-                      "type": "icon",
-                      "settings": {
-                        "icon": "check_box",
-                        "width": 20,
-                        "link": ""
-                      }
-                    },
-                    "text": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>حلال معتمد — Halal Certified</p>",
-                        "type_preset": "paragraph",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "width": "fit-content",
-                        "alignment": "left",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "icon",
-                    "text"
-                  ]
-                },
-                "badge_2": {
-                  "type": "group",
-                  "settings": {
-                    "content_direction": "row",
-                    "vertical_on_mobile": false,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "gap": 6,
-                    "height": "fit"
-                  },
-                  "blocks": {
-                    "icon": {
-                      "type": "icon",
-                      "settings": {
-                        "icon": "map_pin",
-                        "width": 20,
-                        "link": ""
-                      }
-                    },
-                    "text": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>منشأ يمكن تتبعه — Traceable Origin</p>",
-                        "type_preset": "paragraph",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "width": "fit-content",
-                        "alignment": "left",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "icon",
-                    "text"
-                  ]
-                }
-              },
-              "block_order": [
-                "badge_1",
-                "badge_2"
-              ]
-            },
             "accordion_faq_irth1": {
               "type": "accordion",
               "name": "FAQ",
               "settings": {
                 "icon": "caret",
                 "dividers": true,
+                "divider_color": "",
                 "type_preset": "h5",
+                "background_color": "",
+                "text_color": "",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
+                "border_color": "",
                 "border_radius": 0,
                 "padding-block-start": 12,
                 "padding-block-end": 0,
@@ -442,27 +549,36 @@
                 "row_1": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "هل هذا المنتج حلال معتمد؟ — Is this product Halal certified?"
+                    "heading": "Is this product Halal certified?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
                   },
                   "blocks": {
                     "text": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Yes. All IRTH products are Halal certified and sourced with full respect for Islamic tradition.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
+                        "font_size": "1rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                      }
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
@@ -472,27 +588,36 @@
                 "row_2": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "من أين مصدر تمورك؟ — Where are your dates sourced from?"
+                    "heading": "Where are your dates sourced from?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
                   },
                   "blocks": {
                     "text": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Our dates are hand-selected from the palm groves surrounding Madinah Al Munawwarah, a region renowned for centuries of date cultivation.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
+                        "font_size": "1rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                      }
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
@@ -502,27 +627,36 @@
                 "row_3": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "كيف يتم ضمان التتبع؟ — How is traceability guaranteed?"
+                    "heading": "How is traceability guaranteed?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
                   },
                   "blocks": {
                     "text": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Every batch is tracked from harvest to packaging, so you always know the origin of what you're gifting.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
+                        "font_size": "1rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                      }
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
@@ -532,27 +666,36 @@
                 "row_4": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "كيف أحفظ طلبي؟ — How should I store my order?"
+                    "heading": "How should I store my order?",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
                   },
                   "blocks": {
                     "text": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Store in a cool, dry place away from direct sunlight. Refrigeration extends freshness for up to 12 months.</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
+                        "font_size": "1rem",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
-                      }
+                      },
+                      "blocks": {}
                     }
                   },
                   "block_order": [
@@ -577,11 +720,6 @@
             "text_aEtTtq",
             "accordion_faq_irth1"
           ]
-        },
-        "review_widget_irth1": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
         }
       },
       "block_order": [
@@ -607,7 +745,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>يتناسق جيدًا مع — Pairs Well With</h3>",
+            "text": "<h3>Pairs Well With</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -689,6 +827,10 @@
               },
               "blocks": {}
             },
+            "preview_badge_irthjm9": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "settings": {}
+            },
             "price_gLWgA6": {
               "type": "price",
               "settings": {
@@ -703,18 +845,13 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "text_color": "rgba(17,17,17,0.65)",
+                "text_color": "#111111a6",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "preview_badge_irthjm9": {
-              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "disabled": false,
-              "settings": {}
             }
           },
           "block_order": [
@@ -747,10 +884,57 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "178838603982ad1c19": {
+      "type": "_blocks",
+      "blocks": {
+        "codfy_cash_on_delivery_cash_on_delivery_RjXVY3": {
+          "type": "shopify://apps/codfy-cash-on-delivery/blocks/cash-on-delivery/019c2de6-b9e2-7458-8bc5-3be5ab70c56d",
+          "settings": {
+            "button_text": "Buy with Cash on Delivery",
+            "button_bg_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "show_on_product": true,
+            "show_on_cart": true
+          }
+        }
+      },
+      "block_order": [
+        "codfy_cash_on_delivery_cash_on_delivery_RjXVY3"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "178838603982ad1c19"
   ]
 }

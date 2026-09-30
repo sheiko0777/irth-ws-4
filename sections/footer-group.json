@@ -18,7 +18,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer-collections",
-            "heading": "تسوق — Shop",
+            "heading": "Shop",
             "menu_spacing": 12,
             "show_as_accordion": true,
             "accordion_icon": "caret",
@@ -30,7 +30,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer-company",
-            "heading": "قصتنا — Our Story",
+            "heading": "Our Story",
             "menu_spacing": 12,
             "show_as_accordion": true,
             "accordion_icon": "caret",
@@ -42,7 +42,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer-support",
-            "heading": "الشحن — Shipping",
+            "heading": "Shipping",
             "menu_spacing": 12,
             "show_as_accordion": true,
             "accordion_icon": "caret",
@@ -54,7 +54,7 @@
           "type": "menu",
           "settings": {
             "menu": "footer-policies",
-            "heading": "السياسات — Policies",
+            "heading": "Policies",
             "menu_spacing": 12,
             "show_as_accordion": true,
             "accordion_icon": "caret",
@@ -169,7 +169,7 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>انضم لقائمتنا البريدية — Join our email list</h2>",
+                "text": "<h2>Join our email list</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -193,7 +193,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>احصل على عروض حصرية ووصول مبكر للمنتجات الجديدة. — Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Get exclusive deals and early access to new products.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -230,7 +230,7 @@
                 "input_type_preset": "paragraph",
                 "style_class": "button-unstyled",
                 "display_type": "arrow",
-                "label": "اشتراك — Sign up",
+                "label": "Sign up",
                 "integrated_button": true,
                 "button_type_preset": "paragraph",
                 "padding-block-start": 0,

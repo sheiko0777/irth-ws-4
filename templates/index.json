@@ -16,17 +16,17 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "تسوق المجموعة — Shop the Collection",
+            "label": "Shop the Collection",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
             "style_class": "button-custom",
+            "custom_button_background": "rgba(0,0,0,0.4)",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
             "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fit-content",
-            "custom_width_mobile": 100,
-            "custom_button_background": "rgba(0,0,0,0.4)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}"
+            "custom_width_mobile": 100
           },
           "blocks": {}
         }
@@ -69,13 +69,12 @@
     },
     "hero_statement_irth1": {
       "type": "section",
-      "name": "Hero statement",
       "blocks": {
         "text_statement": {
           "type": "text",
           "name": "Statement",
           "settings": {
-            "text": "<h1>إرث · بعض الأشياء لا تصنع، بل تورث · Some things are not made, they are inherited.</h1>",
+            "text": "<h1>Some things are not made, they are inherited.</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "center",
@@ -93,8 +92,7 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "weight": "400"
+            "padding-inline-end": 0
           },
           "blocks": {}
         }
@@ -102,6 +100,7 @@
       "block_order": [
         "text_statement"
       ],
+      "name": "Hero statement",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -117,14 +116,14 @@
         "background_color": "{{ settings.color_palette.background }}",
         "video_position": "cover",
         "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
         "toggle_overlay": false,
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
         "padding-block-start": 18,
         "padding-block-end": 20
       }
@@ -166,7 +165,7 @@
             "text_heading": {
               "type": "text",
               "settings": {
-                "text": "<h3>تسوق حسب الفئة — Shop by Category</h3>",
+                "text": "<h3>Shop by Category</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -213,6 +212,9 @@
             "collection-title": {
               "type": "collection-title",
               "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
                 "font_size": "1rem",
@@ -220,9 +222,6 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
                 "background": true,
                 "background_color": "rgba(0, 0, 0, 0.4)",
                 "text_color": "#f3efe7",
@@ -334,7 +333,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "عرض الكل — View all",
+                "label": "View all",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -431,7 +430,6 @@
             },
             "preview_badge_irthjm7": {
               "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "disabled": false,
               "settings": {}
             }
           },
@@ -486,7 +484,7 @@
               "type": "text",
               "name": "t:names.caption",
               "settings": {
-                "text": "<p>إرثنا — Our Heritage</p>",
+                "text": "<p>Our Heritage</p>",
                 "type_preset": "h6"
               }
             },
@@ -500,7 +498,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h3>مصدرها المدينة المنورة — Sourced from Madinah Al Munawwarah</h3>",
+                    "text": "<h3>Sourced from Madinah Al Munawwarah</h3>",
                     "type_preset": "h3"
                   }
                 },
@@ -521,7 +519,7 @@
             "button": {
               "type": "button",
               "settings": {
-                "label": "قصتنا — Our Story",
+                "label": "Our Story",
                 "link": "shopify://pages/about",
                 "style_class": "button-secondary"
               }
@@ -578,7 +576,7 @@
                 "heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3>حلال معتمد — Halal Certified</h3>",
+                    "text": "<h3>Halal Certified</h3>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -595,7 +593,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>كل منتج معتمد حلال، تكريمًا لتقاليد المدينة المنورة. — Every product is Halal certified, honoring the traditions of Madinah Al Munawwarah.</p>",
+                    "text": "<p>Every product is Halal certified, honoring the traditions of Madinah Al Munawwarah.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -651,7 +649,7 @@
                 "heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3>تتبع كامل ١٠٠٪ — 100% Traceable</h3>",
+                    "text": "<h3>100% Traceable</h3>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -668,7 +666,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>تتبع كامل من الحصاد إلى بابك. — Full traceability from harvest to your door, know exactly where your dates come from.</p>",
+                    "text": "<p>Full traceability from harvest to your door, know exactly where your dates come from.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -724,7 +722,7 @@
                 "heading": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3>مصدرها المدينة المنورة — Sourced from Madinah Al Munawwarah</h3>",
+                    "text": "<h3>Sourced from Madinah Al Munawwarah</h3>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -741,7 +739,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>مُنتقاة يدويًا من المصدر، في قلب المدينة المنورة. — Hand-selected at the source, in the heart of Madinah Al Munawwarah.</p>",
+                    "text": "<p>Hand-selected at the source, in the heart of Madinah Al Munawwarah.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -844,7 +842,7 @@
             "product_list_button": {
               "type": "_product-list-button",
               "settings": {
-                "label": "عرض الكل — View all",
+                "label": "View all",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -937,7 +935,6 @@
             },
             "preview_badge_irthjm8": {
               "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "disabled": false,
               "settings": {}
             }
           },
@@ -976,7 +973,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>حلال معتمد &middot; تتبع كامل ١٠٠٪ &middot; مصدرها المدينة المنورة &middot; Halal Certified &middot; 100% Traceable &middot; Sourced from Madinah Al Munawwarah &middot;</p>",
+            "text": "<p>Halal Certified &middot; 100% Traceable &middot; Sourced from Madinah Al Munawwarah &middot;</p>",
             "width": "fit-content",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
@@ -984,8 +981,8 @@
             "line_height": "tight",
             "letter_spacing": "normal",
             "case": "none",
-            "text_color": "{{ settings.color_palette.background }}",
-            "wrap": "nowrap"
+            "wrap": "nowrap",
+            "text_color": "{{ settings.color_palette.background }}"
           }
         }
       },
