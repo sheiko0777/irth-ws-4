@@ -3,6 +3,7 @@
 
   1. Contained image zoom on product cards (below).
   2. Mobile-only layout fixes (bottom of the stylesheet).
+  3. Hide the COD app button while the selected variant is unavailable.
 
   `.card-gallery` ships with `overflow: hidden`, so scaling the inner image stays
   clipped to the card and cannot spill over neighbouring cards or shift layout.
@@ -102,6 +103,19 @@
     [id$='__product_list_giftboxes'] .resource-list__carousel .resource-list__slide {
       --slide-width: 38cqw;
     }
+  }
+
+  /* Codfy "Buy with Cash on Delivery" app block (its own _blocks section under
+     the product). The app never checks stock, so on a sold-out / unavailable
+     variant it still opened an order form for something we can't ship. Key off
+     the main product form's add-to-cart button instead: Horizon sets [disabled]
+     on it server-side for unavailable variants and toggles it on every variant
+     change (product-form.js), so :has() follows variant switches with no JS and
+     regardless of when the app injects its markup. Scoped to the main section
+     so a sold-out card or quick-add elsewhere on the page can't hide it. */
+  body:has([id$='__main'] product-form-component [ref='addToCartButton'][disabled])
+    :is(.shopify-app-block[id*='codfy_cash_on_delivery'], .cod-product-button) {
+    display: none !important;
   }
 
   /* Desktop footer headings ship at the h3 preset (32px), which reads as a
