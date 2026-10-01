@@ -124,6 +124,20 @@
   assign poster_2_mobile = section.settings.video_2_mobile | image_url: width: 1200
 %}
 
+{%- comment -%}
+  IRTH: the first hero's video poster is the page's LCP image, but browsers
+  fetch posters late and at low priority. Preload it (per breakpoint) so the
+  first paint isn't waiting on the poster. Videos stay preload="none".
+{%- endcomment -%}
+{%- if section.index == 1 and media_1 == 'video' -%}
+  {%- if media_1_mobile == 'video' and media_count_mobile > 0 -%}
+    <link rel="preload" as="image" href="{{ poster_1 }}" media="(min-width: 750px)" fetchpriority="high">
+    <link rel="preload" as="image" href="{{ poster_1_mobile }}" media="(max-width: 749px)" fetchpriority="high">
+  {%- else -%}
+    <link rel="preload" as="image" href="{{ poster_1 }}" fetchpriority="high">
+  {%- endif -%}
+{%- endif -%}
+
 {% capture media_slot_1 %}
   {%- if media_1 == 'image' and media_1_mobile == 'image' -%}
     {%- comment -%} Both desktop and mobile are images. Assume similar images, and this is art direction: use picture element. {%- endcomment -%}

@@ -4,9 +4,10 @@
 {%- unless settings.type_subheading_font.system? -%}
   {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
 {%- endunless -%}
-{%- unless settings.type_heading_font.system? -%}
-  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
-{%- unless settings.type_accent_font.system? -%}
-  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
-{%- endunless -%}
+{%- comment -%}
+  IRTH: headings and accents render in IRTH Ciguatera (see custom-fonts and
+  theme-styles-variables); the heading/accent picker fonts are only fallbacks
+  there, so preloading them fetched a font nothing paints with. Preload the
+  font the headings actually use instead.
+{%- endcomment -%}
+{{ 'irth-ciguatera.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2' }}

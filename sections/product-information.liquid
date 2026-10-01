@@ -1,7 +1,17 @@
-
-
+{%- comment -%}
+  IRTH: variant barcodes are internal placeholders, not real GTINs, and
+  structured_data publishes them as "gtin" — Google rejects invalid GTINs in
+  merchant listings. Strip them until real barcodes are entered.
+{%- endcomment -%}
+{%- capture product_ld -%}{{ closest.product | structured_data }}{%- endcapture -%}
+{%- for variant in closest.product.variants -%}
+  {%- if variant.barcode != blank -%}
+    {%- capture gtin_json %}"gtin":{{ variant.barcode | json }}{% endcapture -%}
+    {%- assign product_ld = product_ld | remove: gtin_json | replace: '{,', '{' | replace: ',,', ',' | replace: ',}', '}' -%}
+  {%- endif -%}
+{%- endfor -%}
 <script type="application/ld+json">
-  {{ closest.product | structured_data }}
+  {{ product_ld }}
 </script>
 
 {% liquid

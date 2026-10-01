@@ -313,13 +313,30 @@
 
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "@id": {{ request.origin | append: '/#organization' | json }},
+    "name": "IRTH HOUSE",
+    "alternateName": ["IRTH", "بيت الإرث العربي", "إرث"],
+    "description": {{ shop.description | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
-    "url": {{ request.origin | append: page.url | json }}
+    "url": {{ request.origin | json }},
+    "email": "hello@irth-house.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+20-111-555-4108",
+      "email": "hello@irth-house.com",
+      "availableLanguage": ["Arabic", "English"],
+      "areaServed": ["EG", "SA", "AE", "KW", "QA", "BH", "OM"]
+    },
+    "sameAs": [
+      "https://www.instagram.com/irth.house",
+      "https://www.facebook.com/Houseirth",
+      "https://x.com/irthhouse"
+    ]
   }
 </script>
 
